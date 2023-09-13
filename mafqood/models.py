@@ -2,17 +2,14 @@ from django.db import models
 from datetime import date, timedelta
 from config.constants import Options
 from disaster.models import Disaster
-from django.db.models.signals import post_save
-from django.dispatch import receiver
-from django.contrib.auth.models import User
 
 
 class Mafqood(models.Model):
     disaster = models.ForeignKey(Disaster, related_name='missings', null=True, blank=True, on_delete=models.SET_NULL)
 
+    # Missing Person
     first_name = models.CharField(max_length=255, blank=True, null=True)
     family_name = models.CharField(max_length=255, blank=True, null=True)
-
     father_name = models.CharField(max_length=255, blank=True, null=True)
     mother_name = models.CharField(max_length=255, blank=True, null=True)
 
@@ -21,6 +18,7 @@ class Mafqood(models.Model):
     address = models.CharField(max_length=255, blank=True, null=True)
     weight = models.IntegerField(blank=True, null=True)
     height = models.IntegerField(blank=True, null=True)
+    distinct_feature = models.CharField(max_length=255, blank=True, null=True)
 
     contact_number = models.IntegerField(blank=True, null=True)
 
@@ -28,6 +26,14 @@ class Mafqood(models.Model):
     last_contact_details = models.CharField(max_length=255, blank=True, null=True)
 
     any_other_details = models.TextField(blank=True, null=True)
+
+    photograph = models.ImageField(upload_to='mafqoodeen/', blank=True, null=True)
+
+    # Contact person
+    reporter_first_name = models.CharField(max_length=255, blank=True, null=True)
+    reporter_last_name = models.CharField(max_length=255, blank=True, null=True)
+    reporter_contact_number = models.IntegerField(blank=True, null=True)
+    reporter_relation_to_missing = models.CharField(max_length=255, blank=True, null=True)
 
     status = models.CharField(max_length=50, null=True, blank=True, choices=Options.mafqood['status'])
     created = models.DateTimeField(auto_now_add=True)
