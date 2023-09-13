@@ -4,7 +4,7 @@ html {background:#1a1a1a !important; color:white;}
 body {background:#1a1a1a !important; color:white;}
 
 /* header ----------------------------------------------------------------------------------- */
-.header {color:white;}
+.header {color:white; padding-bottom:10px; border-bottom:13px solid #ffe100}
 .main_title {color:white !important; }
 
 /* footer ----------------------------------------------------------------------------------- */
@@ -13,7 +13,8 @@ body {background:#1a1a1a !important; color:white;}
 
 /* main content ----------------------------------------------------------------------------------- */
 .main_content {margin-top:0; padding-top:0;}
-.missing_counter {letter-spacing: 0.2em;}
+.missing_counter {}
+.missing_counter span {background:#3a3a3a; text-align: center; }
 
 
 

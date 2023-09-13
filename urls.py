@@ -14,7 +14,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # pages
-    path('', include('main.urls', namespace='main')),
+    path('', include('disaster.urls', namespace='disaster')),
     path('mafqood/', include('mafqood.urls', namespace='mafqood')),
 
 ]

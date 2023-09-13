@@ -43,7 +43,7 @@ class Mafqood(models.Model):
 
     @property
     def full_name(self):
-        return f'{self.first_name} {self.father_name} {self.father_father_name} {self.family_name}'
+        return f'{self.first_name} {self.family_name}'
 
     @property
     def age(self):
@@ -55,8 +55,3 @@ class Mafqood(models.Model):
         # Get list of all family members based on the Kutayib
         return self.citizens.order_by('-provider', 'date_of_birth')
 
-    def save(self, *args, **kwargs):
-        if not self.pk:
-            # Force NID to always be UPPER Case
-            self.nid = self.nid.upper()
-        return super(Mafqood, self).save(*args, **kwargs)

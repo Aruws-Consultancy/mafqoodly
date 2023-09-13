@@ -1,0 +1,25 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block content %}
+{% if disaster.image %}
+<img src="/static/img/{{disaster.image}}" width="100%"></a>
+{% endif %}
+
+<div class="missing_counter is-size-1 has-text-centered" style="color:white;">
+    {% for i in counter %}
+    <span class="has-text-centered" style="padding:10px">{{i}}</span>
+    {% endfor %}
+</div>
+<div class="is-size-2 has-text-centered">
+    {{disaster.name}}
+</div>
+
+<div class="is-size-4 has-text-right" style="direction: rtl;">
+    <span style="font-weight:bold;">مرحبًا بك في مجتمعنا</span>
+    <p class="is-size-5 has-text-right is-right">نسعى في منصة "مفقود" للمساهمة والبحث عن مفقودي فاجعة إعصار دانييل. وتوفير الموارد اللازمة والطارئة للمساعدة في عملية البحث والإنقاذ. تم تصميم منصتنا المخصصة لمساعدة أولئك المتأثرين بالفاجعة، وتقديم الأمل والمساعدة.</p>
+    <span style="font-weight:bold;">ما نقدمه</span>
+    <p class="is-size-5 has-text-right is-right">- قاعدة بيانات المفقودين : تعد قاعدة البيانات الشاملة لدينا مستودعًا مركزيًا للمعلومات عن الأشخاص المفقودين. يمكن لأي شخص إنشاء قاعدة بيانات للأشخاص المفقودين، بما في ذلك التفاصيل الحيوية والصور الحديثة وأي سمات مميزة. تعتبر هذه القاعدة البيانات مصدرًا حيويًا للأسر للتعاون ومشاركة المعلومات مع جهات إنفاذ القانون وأعضاء المجتمع الآخرين.</p>
+    <p class="is-size-5 has-text-right is-right">- مركز الموارد : يقدم موقعنا ثروة من الموارد لإرشاد الأسر خلال عملية البحث. نقدم معلومات حول منظمات البحث والإنقاذ والمساعدة.</p>
+</div>
+{% endblock %}

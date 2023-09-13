@@ -33,9 +33,8 @@ INSTALLED_APPS = [
     # Installed Apps
 
     # Core Apps
-    'main',
-    'mafqood',
     'disaster',
+    'mafqood',
 ]
 
 MIDDLEWARE = [
