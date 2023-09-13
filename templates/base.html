@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mafqood.ly</title>
+
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Rubik">
+
+    {% load static %}
+    <link href='{% static "bulma/css/style.min.css" %}' rel="stylesheet">
+    <link href='{% static "bulma/css/switch.min.css" %}' rel="stylesheet">
+    <link href='{% static "fontawesome/css/all.min.css" %}' rel="stylesheet">
+    <link href='{% static "img/favicon.ico" %}' rel="shortcut icon" type='image/png'>
+
+    <script src='{% static "libs/jquery.js" %}' type="text/javascript"></script>
+    <script src='{% static "libs/jquery-ui.min.js" %}' type="text/javascript"></script>
+
+    <link href='{% static "css/main.css" %}' rel="stylesheet">
+    <script src='{% static "js/main.js" %}' type="text/javascript"></script>
+
+    {% block scripts %} {% endblock %}
+
+</head>
+
+<body>
+    <div class="lds-ring loader" id="loader"><div></div><div></div><div></div><div></div></div>
+
+    <section class="section header has-text-right">
+        <div class="container">
+            <div class="content" style="border-bottom:13px solid #ffe100">
+                <a href="/">
+                    <h1 class="title is-1 main_title has-text-right">سجل المفقودين</h1>
+                    <h1 class="title is-5 main_title has-text-right" style="margin-top:-12px;">The National Register For Missing People</h1>
+                </a>
+            </div>
+        </div>
+    </section>
+    <section class="section main_content">
+        <div class="container">
+            <div class="content">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </section>
+
+    <div class="container footer">
+        <div class="copyright-content columns">
+            <div class="column">
+                Mafqood.ly</br>
+                Contact us on:</br>
+                Telephone: +218-123456789</br>
+                Email: info@mafqood.ly</br>
+            </div>
+            <div class="column has-text-right is-size-7" style="color:grey">
+                <img src="/static/img/aruws_logo.svg" width="50px" style="float:right;">
+                </br></br></br>
+                Mafqood.ly - Supported by ARUWS Ltd
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

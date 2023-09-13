@@ -1,0 +1,32 @@
+<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+ <defs>
+  <filter height="200%" width="200%" y="-50%" x="-50%" id="svg_50_blur">
+   <feGaussianBlur stdDeviation="0" in="SourceGraphic"/>
+  </filter>
+ </defs>
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="402" width="402" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g id="svg_10">
+   <clipPath transform="translate(0.33035868406295776,1.7619129419326782) translate(-3.083348035812378,-0.6607173681259155) " id="Mask_Mask_1">
+    <rect id="svg_11" fill="#FFFFFF" height="15.3" width="69.05" y="-2" x="-2"/>
+   </clipPath>
+  </g>
+  <g stroke="null" id="svg_49">
+   <path stroke="null" id="svg_20" d="m295.480226,337.67922l47.821586,-83.687776l47.821586,83.687776l-95.643173,0z" stroke-opacity="null" stroke-width="null" fill="#0000ff"/>
+   <path stroke="null" id="svg_23" d="m343.247788,254.099639l-47.821596,83.687772l-47.821575,-83.687772l95.643171,0z" stroke-width="null" fill="#ff007f"/>
+   <path stroke="null" id="svg_25" d="m295.372066,170.336519l-47.821596,83.687772l-47.821575,-83.687772l95.643171,0z" stroke-width="null" fill="#ff3f00"/>
+   <path stroke="null" id="svg_26" d="m199.728931,170.523851l47.821575,-83.687772l47.821596,83.687772l-95.643171,0z" stroke-opacity="null" stroke-width="null" fill="#ff7200"/>
+   <path stroke="null" id="svg_27" d="m247.604587,86.836073l-47.821596,83.687772l-47.821575,-83.687772l95.643171,0z" stroke-opacity="null" stroke-width="null" fill="#ffc021"/>
+   <path stroke="null" id="svg_28" d="m151.979077,86.932938l47.821575,-83.687772l47.821596,83.687772l-95.643171,0z" fill-opacity="null" stroke-opacity="null" stroke-width="null" fill="#FFDB31"/>
+   <path stroke="null" id="svg_43" d="m199.997942,170.555944l-47.821575,83.687772l-47.821596,-83.687772l95.643171,0z" stroke-opacity="null" stroke-width="null" fill="#ffab26"/>
+   <path stroke="null" id="svg_45" d="m152.323282,254.193804l-47.821575,83.687772l-47.821596,-83.687772l95.643171,0z" stroke-opacity="null" stroke-width="null" fill="#f2b92b"/>
+   <path stroke="null" id="svg_46" d="m56.593521,254.28081l47.821575,-83.687772l47.821596,83.687772l-95.643171,0z" fill-opacity="null" stroke-opacity="null" stroke-width="null" fill="#FFDB31"/>
+   <path stroke="null" id="svg_47" d="m8.876602,337.929821l47.821575,-83.687772l47.821596,83.687772l-95.643171,0z" fill-opacity="null" stroke-opacity="null" stroke-width="null" fill="#FFDB31"/>
+  </g>
+  <text filter="url(#svg_50_blur)" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="Arvo, sans-serif" font-size="52" id="svg_50" y="383.090283" x="8.955539" stroke-opacity="null" stroke-width="0" stroke="null" fill="#333333">ARUWS</text>
+ </g>
+</svg>

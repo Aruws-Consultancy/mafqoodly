@@ -1,0 +1,33 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block content %}
+    <div class="columns" style="margin-bottom:0px !important">
+        <div class="column is-three-fifthss">
+            <span class="title is-5" style="float:left; padding-top:15px;">
+                {% if status_code == 404 %} 
+                    404 Page Not Found 
+                {% elif status_code == 500 %} 
+                    500 Internal Error Page
+                {% elif status_code == 403 %} 
+                    403 Forbidden Page
+                {% endif %}
+            </span>
+        </div>
+    </div>
+
+    <div class="box" style="padding-top:25px;">
+        <span class="title-1">
+            {% if status_code == 404 %} 
+                Please we are looking into resolving your problem
+            {% elif status_code == 500 %}
+                <span class="title-1"> Page not available. If you think there is an error, let us know at testdemandreportingtool@test-and-trace.nhs.uk or 
+                    text directly a member of the development team </span><br>
+            {% elif status_code == 403 %} 
+                <span class="title-1"> You dont have permission to access page </span><br>
+                <a href='/'><span> Return to Homepage</span></a>
+            {% endif %}
+        </span><br>
+    </div>
+            
+{% endblock %}

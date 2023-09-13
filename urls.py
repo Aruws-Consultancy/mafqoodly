@@ -1,0 +1,20 @@
+"""Mafqoodly URL Configuration"""
+from django.contrib import admin
+from django.views.generic.base import RedirectView
+from django.urls import path, re_path, include
+
+favicon_view = RedirectView.as_view(url='/static/favicon.ico', permanent=True)
+
+urlpatterns = [
+
+    # favicon
+    re_path(r'^favicon\.ico$', favicon_view),
+
+    # Django Admin
+    path('admin/', admin.site.urls),
+
+    # pages
+    path('', include('main.urls', namespace='main')),
+    path('mafqood/', include('mafqood.urls', namespace='mafqood')),
+
+]

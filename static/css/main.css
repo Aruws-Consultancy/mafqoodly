@@ -1,0 +1,89 @@
+
+/* General Styling ----------------------------------------------------------------------------------- */
+html {background:#1a1a1a !important; color:white;}
+body {background:#1a1a1a !important; color:white;}
+
+/* header ----------------------------------------------------------------------------------- */
+.header {color:white;}
+.main_title {color:white !important; }
+
+/* footer ----------------------------------------------------------------------------------- */
+.footer {background:#1a1a1a !important; border-top:13px solid #ffe100}
+
+
+/* main content ----------------------------------------------------------------------------------- */
+.main_content {margin-top:0; padding-top:0;}
+.missing_counter {letter-spacing: 0.2em;}
+
+
+
+/* Bulma fixes ----------------------------------------------------------------------------------- */
+.label  {margin-bottom:3px !important}
+.select, .select select{ width: 100%;}
+textarea { height: 70px !important;}
+.form-table td {padding:7px 5px;}
+.switch[type=checkbox]+label  {padding-top: 0 !important;}
+
+.box {border-top: 1px solid #dbdbdb; margin-top:-5px; border-top-left-radius: 0; border-top-right-radius: 0;}
+.is-hoverable tbody tr:hover td, .table tbody tr:hover th {
+    background-color: #eeeeee;
+}
+.notification {border-radius: 8px; border:1px solid white}
+
+/* registration form ------------------------------------------------------------------------------ */
+#reg_box label { font-size: 15px; font-weight:800; padding-top:15px; display:block;}
+#reg_box input { width:100%; height:35px; padding: 4px 5px; margin-top:3px; box-sizing: border-box; border: 1px solid rgb(169, 169, 169); border-radius:3px;
+                   moz-box-shadow:inset 0 0 2px #d0d0d0; -webkit-box-shadow: inset 0 0 2px #d0d0d0; box-shadow: inset 0 0 2px #d0d0d0; }
+
+#reg_box select { width:100%; height:35px; padding: 4px 5px; margin-top:3px; box-sizing: border-box; border: 1px solid rgb(169, 169, 169); border-radius:3px;
+                   moz-box-shadow:inset 0 0 2px #d0d0d0; -webkit-box-shadow: inset 0 0 2px #d0d0d0; box-shadow: inset 0 0 2px #d0d0d0; }
+
+#reg_box ul {font-size:10px; font-weight: 600;}       
+#reg_box .helptext {font-size:10px; font-weight: 600;}   
+ 
+.help_content {padding:20px;}
+.upload_content {padding:0px;}
+
+/* floater ----------------------------------------------------------------------------------- */
+.stop-scrolling {overflow: hidden;}
+.blackout   {width:100%; height:100%; opacity:0.3; background:grey; position: fixed; top:0; left:0; z-index:800;}
+.floater    { top:50%; left:50%; margin:0 auto; position: fixed; z-index:900;
+             Background: white; border-radius:5px; float:left; overflow:hidden;
+             box-shadow: 0 0 12px rgba(0,0,0,0.3);}
+
+.floater_lrg {height:700px; width:1200px; margin-top:-350px; margin-left:-600px;}
+.floater_big {height:600px; width:600px; margin-top:-225px; margin-left:-300px;}
+.floater_mid {height:470px; width:650px; margin-top:-250px; margin-left:-325px;}
+.floater_wid {height:330px; width:795px; margin-top:-165px; margin-left:-397px;}
+.floater_sqr {height:360px; width:360px; margin-top:-175px; margin-left:-175px;}
+.floater_sml {height:240px; width:400px; margin-top:-130px; margin-left:-200px;}
+.floater_com {height:350px; width:750px; margin-top:-175px; margin-left:-375px;}
+.floater_msg {height:150px; width:500px; margin-top:-85px; margin-left:-250px;}
+.floater_err {height:150px; width:300px; margin-top:-85px; margin-left:-150px;}
+
+.floater_head   { float:left; width:100%; padding:20px 20px 3px 20px; font-weight:600; border-bottom:2px #f14668 solid;}
+.floater_cont   { float:left; width:100%; padding:10px 20px 10px 20px; }
+.floater_btns   { float:right; width:100%; padding: 15px 20px 15px 20px; margin-top:0px; border-top: 2px #f14668 solid;
+                  position:absolute; bottom: 0;}
+
+/* loader ----------------------------------------------------------------------------------- */
+
+.loader{display:none; z-index:999; 
+    border: 7px solid #5e5e5e;
+    border-radius: 290486px;
+    border-right-color: transparent;
+    border-top-color: transparent;}
+
+.lds-ring {
+  position: fixed;
+  width: 100px;
+  top:40%;
+  left:50%;
+  height: 100px;
+}
+
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+}
