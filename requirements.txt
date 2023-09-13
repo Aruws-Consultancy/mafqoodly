@@ -17,4 +17,6 @@ mock
 model_bakery==1.9.0
 Faker
 Pillow
- django-phone-field
+django-phone-field
+django-crispy-forms
+crispy-bulma

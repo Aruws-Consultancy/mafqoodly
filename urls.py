@@ -15,8 +15,7 @@ urlpatterns = [
     # Django Admin
     path('admin/', admin.site.urls),
 
-    # pages
+    # Disaster
     path('', include('disaster.urls', namespace='disaster')),
-    path('mafqood/', include('mafqood.urls', namespace='mafqood')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

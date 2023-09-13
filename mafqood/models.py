@@ -7,44 +7,40 @@ from phone_field import PhoneField
 
 class Mafqood(models.Model):
 
-    disaster = models.ForeignKey(Disaster, related_name='missings', null=True, blank=True, on_delete=models.SET_NULL)
+    disaster = models.ForeignKey(Disaster, related_name='missings', null=False, blank=False, on_delete=models.CASCADE)
 
     # Missing Person
-    first_name = models.CharField(max_length=255, blank=True, null=True)
-    family_name = models.CharField(max_length=255, blank=True, null=True)
-    father_name = models.CharField(max_length=255, blank=True, null=True)
-    mother_name = models.CharField(max_length=255, blank=True, null=True)
+    name = models.CharField(max_length=255, blank=True, null=True, verbose_name="الاسم")
+    surname = models.CharField(max_length=255, blank=True, null=True, verbose_name="اللقب")
 
-    gender = models.CharField(max_length=10, null=True, blank=True, choices=Options.mafqood['gender'])
+    date_of_birth = models.DateField(blank=True, null=True, verbose_name="تاريخ الميلاد")
+    age = models.IntegerField(blank=True, null=True, verbose_name="العمر")
 
-    date_of_birth = models.DateField(blank=True, null=True)
-    age = models.IntegerField(blank=True, null=True)
+    address = models.CharField(max_length=255, blank=True, null=True, verbose_name="عنوان السكن")
+    city = models.CharField(max_length=255, blank=True, null=True, verbose_name="المدينة")
+    contact_number = PhoneField(blank=True, null=True, verbose_name="رقم الهاتف")
 
-    address = models.CharField(max_length=255, blank=True, null=True)
-    city = models.CharField(max_length=255, blank=True, null=True)
-    contact_number = PhoneField(blank=True, null=True)
+    gender = models.CharField(max_length=10, null=True, blank=True, choices=Options.mafqood['gender'], verbose_name="جنس")
+    weight = models.IntegerField(blank=True, null=True, verbose_name="الوزن")
+    height = models.IntegerField(blank=True, null=True, verbose_name="الطول")
+    distinct_feature = models.CharField(max_length=255, blank=True, null=True, verbose_name="ملامح مميزة")
+    blod_type = models.CharField(max_length=10, null=True, blank=True, choices=Options.mafqood['blod_type'], verbose_name="فصيلة الدم")
 
-    gender = models.CharField(max_length=10, null=True, blank=True, choices=Options.mafqood['gender'])
-    weight = models.IntegerField(blank=True, null=True)
-    height = models.IntegerField(blank=True, null=True)
-    distinct_feature = models.CharField(max_length=255, blank=True, null=True)
-    blod_type = models.CharField(max_length=10, null=True, blank=True, choices=Options.mafqood['blod_type'])
+    last_contact_date = models.DateTimeField(auto_now_add=False, blank=True, null=True, verbose_name="تاريخ الاختفاء")
+    last_contact_details = models.CharField(max_length=255, blank=True, null=True, verbose_name="معلومات عن اخر لقاء")
 
-    last_contact_date = models.DateTimeField(auto_now_add=False, blank=True, null=True)
-    last_contact_details = models.CharField(max_length=255, blank=True, null=True)
+    any_other_details = models.TextField(blank=True, null=True, verbose_name="معلومات اضافية")
 
-    any_other_details = models.TextField(blank=True, null=True)
-
-    photograph = models.ImageField(upload_to='mafqood', blank=True, null=True)
+    photograph = models.ImageField(upload_to='mafqood', blank=True, null=True, verbose_name="صورة")
 
     # Contact person
-    reporter_first_name = models.CharField(max_length=255, blank=True, null=True)
-    reporter_last_name = models.CharField(max_length=255, blank=True, null=True)
-    reporter_contact_number = PhoneField(blank=True, null=True)
-    reporter_contact_number_2 = PhoneField(blank=True, null=True)
-    reporter_relation_to_missing = models.CharField(max_length=255, blank=True, null=True)
-    report_city = models.CharField(max_length=255, blank=True, null=True)
-    report_address = models.CharField(max_length=255, blank=True, null=True)
+    reporter_name = models.CharField(max_length=255, blank=True, null=True, verbose_name="الاسم")
+    reporter_surname = models.CharField(max_length=255, blank=True, null=True, verbose_name="اللقب")
+    reporter_contact_number = PhoneField(blank=True, null=True, verbose_name="رقم الهاتف")
+    reporter_contact_number_2 = PhoneField(blank=True, null=True, verbose_name="رقم الهاتف 2")
+    reporter_relation_to_missing = models.CharField(max_length=255, blank=True, null=True, verbose_name="الصلة للمفقود")
+    reporter_city = models.CharField(max_length=255, blank=True, null=True, verbose_name="المدينة")
+    reporter_address = models.CharField(max_length=255, blank=True, null=True, verbose_name="عنوان السكن")
 
     status = models.CharField(max_length=50, null=True, blank=True, choices=Options.mafqood['status'])
     created = models.DateTimeField(auto_now_add=True)
@@ -54,7 +50,7 @@ class Mafqood(models.Model):
 
     @property
     def full_name(self):
-        return f'{self.first_name} {self.family_name}'
+        return f'{self.name} {self.surname}'
 
     @property
     def family(self):
@@ -62,8 +58,7 @@ class Mafqood(models.Model):
         return self.citizens.order_by('-provider', 'date_of_birth')
 
     def calc_age(self):
-        date_for_age = date.today() if not self.date_of_death else self.date_of_death
-        return (date_for_age - self.date_of_birth) // timedelta(days=365.2425)
+        return (date.today() - self.date_of_birth) // timedelta(days=365.2425)
 
     def save(self, *args, **kwargs):
         if not self.pk and not self.age and self.date_of_birth:

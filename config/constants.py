@@ -1,6 +1,6 @@
 class Options:
     mafqood = {
-        "gender": (
+        "blod_type": (
             ("O+", "O+"),
             ("O-", "O-"),
             ("A+", "A+"),
@@ -10,7 +10,7 @@ class Options:
             ("AB", "AB+"),
             ("AB-", "AB-"),
         ),
-        "blod_type": (
+        "gender": (
             ("male", "ذكر"),
             ("female", "انثى"),
         ),

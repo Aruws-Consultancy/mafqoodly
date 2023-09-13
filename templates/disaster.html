@@ -17,8 +17,10 @@
 </div>
 
 <div class="is-size-2 has-text-centered">
-    {{disaster.name}}
+    <div class="disaster_name"> {{disaster.name}}</div>
+    <a class="report_button button is-danger is-medium" style="min-width:22%" href="disaster/{{disaster.id}}/mafqood/report" >بلغ عن مفقود</a>
 </div>
+</br>
 </br>
 <div class="is-size-4 has-text-right" style="direction: rtl;">
     <span style="font-weight:bold;">مرحبًا بك في مجتمعنا</span>
@@ -27,4 +29,5 @@
     <p class="is-size-5 has-text-right is-right">- قاعدة بيانات المفقودين : تعد قاعدة البيانات الشاملة لدينا مستودعًا مركزيًا للمعلومات عن الأشخاص المفقودين. يمكن لأي شخص إنشاء قاعدة بيانات للأشخاص المفقودين، بما في ذلك التفاصيل الحيوية والصور الحديثة وأي سمات مميزة. تعتبر هذه القاعدة البيانات مصدرًا حيويًا للأسر للتعاون ومشاركة المعلومات مع جهات إنفاذ القانون وأعضاء المجتمع الآخرين.</p>
     <p class="is-size-5 has-text-right is-right">- مركز الموارد : يقدم موقعنا ثروة من الموارد لإرشاد الأسر خلال عملية البحث. نقدم معلومات حول منظمات البحث والإنقاذ والمساعدة.</p>
 </div>
+</br>
 {% endblock %}

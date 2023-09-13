@@ -5,5 +5,5 @@ from mafqood import views
 app_name = 'mafqood'
 
 urlpatterns = [
-    path('<int:id>', views.mafqood, name='view_mafqood'),
+    path('report', views.report_missing, name='report_missing'),
 ]
