@@ -3,7 +3,7 @@ from mafqood.models import Mafqood
 
 
 class MafqoodAdmin(admin.ModelAdmin):
-    list_display = ('id', 'first_name', 'family_name', 'status')
+    list_display = ('first_name', 'family_name', 'status', 'created')
 
 
 admin.site.register(Mafqood, MafqoodAdmin)

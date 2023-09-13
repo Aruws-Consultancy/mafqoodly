@@ -1,21 +1,21 @@
 
 /* General Styling ----------------------------------------------------------------------------------- */
-html {background:#1a1a1a !important; color:white;}
-body {background:#1a1a1a !important; color:white;}
+html {background:#1a1a1a !important; color:white; font-family: system-ui;}
+body {background:#1a1a1a !important; color:white; font-family: system-ui;}
 
 /* header ----------------------------------------------------------------------------------- */
-.header {color:white; padding-bottom:10px; border-bottom:13px solid #ffe100}
+.header {color:white; padding-bottom:10px; border-bottom:13px solid #f5e017}
 .main_title {color:white !important; }
 
 /* footer ----------------------------------------------------------------------------------- */
-.footer {background:#1a1a1a !important; border-top:13px solid #ffe100}
+.footer {background:#1a1a1a !important; border-top:13px solid #f5e017}
 
 
 /* main content ----------------------------------------------------------------------------------- */
 .main_content {margin-top:0; padding-top:0;}
-.missing_counter {}
-.missing_counter span {background:#3a3a3a; text-align: center; }
-
+.missing_counter {margin-top: -2em;}
+.missing_counter span {background:#3a3a3a; text-align: center;}
+.disaster_image {width:auto; height:20em; margin-top: -3em; margin-bottom:1em}
 
 
 /* Bulma fixes ----------------------------------------------------------------------------------- */
