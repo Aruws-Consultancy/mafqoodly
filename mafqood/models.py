@@ -10,28 +10,26 @@ from django.contrib.auth.models import User
 class Mafqood(models.Model):
     disaster = models.ForeignKey(Disaster, related_name='missings', null=True, blank=True, on_delete=models.SET_NULL)
 
-    nid = models.CharField(max_length=255, unique=True, blank=False, null=False)
-
     first_name = models.CharField(max_length=255, blank=True, null=True)
     family_name = models.CharField(max_length=255, blank=True, null=True)
 
     father_name = models.CharField(max_length=255, blank=True, null=True)
-    father_father_name = models.CharField(max_length=255, blank=True, null=True)
-    father_family_name = models.CharField(max_length=255, blank=True, null=True)
-
     mother_name = models.CharField(max_length=255, blank=True, null=True)
-    mother_father_name = models.CharField(max_length=255, blank=True, null=True)
-    mother_family_name = models.CharField(max_length=255, blank=True, null=True)
 
     date_of_birth = models.DateField(blank=True, null=True)
 
-    status = models.CharField(max_length=50, null=True, blank=True, choices=Options.mafqood['status'])
+    address = models.CharField(max_length=255, blank=True, null=True)
+    weight = models.IntegerField(blank=True, null=True)
+    height = models.IntegerField(blank=True, null=True)
+
+    contact_number = models.IntegerField(blank=True, null=True)
 
     last_contact = models.DateTimeField(auto_now_add=False, blank=True, null=True)
     last_contact_details = models.CharField(max_length=255, blank=True, null=True)
 
-    telephone = models.CharField(max_length=255, blank=True, null=True)
+    any_other_details = models.TextField(blank=True, null=True)
 
+    status = models.CharField(max_length=50, null=True, blank=True, choices=Options.mafqood['status'])
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
