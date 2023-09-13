@@ -4,7 +4,7 @@ html {background:#1a1a1a !important; color:white; font-family: system-ui;}
 body {background:#1a1a1a !important; color:white; font-family: system-ui;}
 
 /* header ----------------------------------------------------------------------------------- */
-.header {color:white; padding-bottom:10px; border-bottom:13px solid #f5e017}
+.header {color:white; padding-bottom:15px; border-bottom:13px solid #f5e017}
 .main_title {color:white !important; }
 .flag {width:40%; padding-top:4%; padding-left:10px;}
 .flag img {width:150px}
