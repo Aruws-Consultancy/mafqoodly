@@ -12,10 +12,14 @@ def mafqood_update(request, id):
 
 
 class ReportMissing(forms.ModelForm):
+
     class Meta:
         model = Mafqood
         fields = '__all__'
-        widgets = {'disaster': forms.HiddenInput()}
+        widgets = {'disaster': forms.HiddenInput(),
+                   'date_of_birth': forms.DateInput(attrs={'type': 'date'}),
+                   'last_contact_date': forms.DateInput(attrs={'type': 'date'})
+                    }
 
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop("request")

@@ -20,17 +20,16 @@ class Mafqood(models.Model):
     city = models.CharField(max_length=255, blank=True, null=True, verbose_name="المدينة")
     contact_number = PhoneField(blank=True, null=True, verbose_name="رقم الهاتف")
 
+    last_contact_date = models.DateTimeField(auto_now_add=False, blank=True, null=True, verbose_name="تاريخ الاختفاء")
+
     gender = models.CharField(max_length=10, null=True, blank=True, choices=Options.mafqood['gender'], verbose_name="جنس")
     weight = models.IntegerField(blank=True, null=True, verbose_name="الوزن")
     height = models.IntegerField(blank=True, null=True, verbose_name="الطول")
-    distinct_feature = models.CharField(max_length=255, blank=True, null=True, verbose_name="ملامح مميزة")
     blod_type = models.CharField(max_length=10, null=True, blank=True, choices=Options.mafqood['blod_type'], verbose_name="فصيلة الدم")
 
-    last_contact_date = models.DateTimeField(auto_now_add=False, blank=True, null=True, verbose_name="تاريخ الاختفاء")
-    last_contact_details = models.CharField(max_length=255, blank=True, null=True, verbose_name="معلومات عن اخر لقاء")
-
+    clothing = models.CharField(max_length=10, null=True, blank=True, verbose_name="ملابس")
+    distinct_feature = models.CharField(max_length=255, blank=True, null=True, verbose_name="ملامح مميزة")
     any_other_details = models.TextField(blank=True, null=True, verbose_name="معلومات اضافية")
-
     photograph = models.ImageField(upload_to='mafqood', blank=True, null=True, verbose_name="صورة")
 
     # Contact person
@@ -38,7 +37,7 @@ class Mafqood(models.Model):
     reporter_surname = models.CharField(max_length=255, blank=True, null=True, verbose_name="اللقب")
     reporter_contact_number = PhoneField(blank=True, null=True, verbose_name="رقم الهاتف")
     reporter_contact_number_2 = PhoneField(blank=True, null=True, verbose_name="رقم الهاتف 2")
-    reporter_relation_to_missing = models.CharField(max_length=255, blank=True, null=True, verbose_name="الصلة للمفقود")
+    reporter_relation_to_missing = models.CharField(max_length=255, blank=True, null=True, verbose_name="صلة القرابة للمفقود")
     reporter_city = models.CharField(max_length=255, blank=True, null=True, verbose_name="المدينة")
     reporter_address = models.CharField(max_length=255, blank=True, null=True, verbose_name="عنوان السكن")
 
