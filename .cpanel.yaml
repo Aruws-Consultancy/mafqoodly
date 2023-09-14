@@ -3,4 +3,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/mafqoodl/mafqoodly/
-    /bin/cp index.html $DEPLOYPATH
+    - /bin/cp -R images $DEPLOYPATH
