@@ -10,9 +10,9 @@ def disaster(request, disaster=None):
     else:
         disaster = Disaster.objects.get(is_main_focus=True)
 
-    counter = disaster.missings.all().count()
+    counter = int(3129) + int(disaster.missings.all().count())
     if counter < 10000:
-        counter = f'0000{counter}'
+        counter = f'0{counter}'
     content = {'disaster':disaster, 'counter':str(counter)}
 
     return render(request, "disaster.html", content)
