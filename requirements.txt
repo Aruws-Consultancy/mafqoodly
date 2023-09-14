@@ -1,5 +1,6 @@
 Django==4.1.3
 django-glrm
+pymysql
 pandas
 django-multiselectfield
 django-cors-headers
