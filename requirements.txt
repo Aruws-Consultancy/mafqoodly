@@ -22,4 +22,5 @@ django-crispy-forms
 crispy-bulma
 django-bulma
 mysqlclient
+django-phonenumbers
 django-phonenumber-field

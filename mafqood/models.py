@@ -2,7 +2,7 @@ from django.db import models
 from datetime import date, timedelta
 from config.constants import Options
 from disaster.models import Disaster
-from phone_field import PhoneField
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 class Mafqood(models.Model):
@@ -18,7 +18,7 @@ class Mafqood(models.Model):
 
     address = models.CharField(max_length=255, blank=True, null=True, verbose_name="عنوان السكن")
     city = models.CharField(max_length=255, blank=True, null=True, verbose_name="المدينة")
-    contact_number = PhoneField(blank=True, null=True, verbose_name="رقم الهاتف")
+    contact_number = PhoneNumberField(blank=True, null=True, verbose_name="رقم الهاتف")
 
     last_contact_date = models.DateTimeField(auto_now_add=False, blank=True, null=True, verbose_name="تاريخ الاختفاء")
 
@@ -35,8 +35,8 @@ class Mafqood(models.Model):
     # Contact person
     reporter_name = models.CharField(max_length=255, blank=True, null=True, verbose_name="الاسم")
     reporter_surname = models.CharField(max_length=255, blank=True, null=True, verbose_name="اللقب")
-    reporter_contact_number = PhoneField(blank=True, null=True, verbose_name="رقم الهاتف")
-    reporter_contact_number_2 = PhoneField(blank=True, null=True, verbose_name="رقم الهاتف 2")
+    reporter_contact_number = PhoneNumberField(blank=True, null=True, verbose_name="رقم الهاتف")
+    reporter_contact_number_2 = PhoneNumberField(blank=True, null=True, verbose_name="رقم الهاتف 2")
     reporter_relation_to_missing = models.CharField(max_length=255, blank=True, null=True, verbose_name="صلة القرابة للمفقود")
     reporter_city = models.CharField(max_length=255, blank=True, null=True, verbose_name="المدينة")
     reporter_address = models.CharField(max_length=255, blank=True, null=True, verbose_name="عنوان السكن")
