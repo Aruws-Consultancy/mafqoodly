@@ -1,16 +1,34 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
-from django.template.loader import render_to_string
-from django.views.generic import TemplateView
-from mafqood.forms import ReportMissing
-from mafqood.models import Mafqood
+from django import forms
 from disaster.models import Disaster
+from mafqood.models import Mafqood
 
 
 def mafqood_update(request, id):
     mafqood = get_object_or_404(Mafqood, id=id)
     content = {'mafqood': mafqood}
     return render(request, "main.html", content)
+
+
+class ReportMissing(forms.ModelForm):
+    class Meta:
+        model = Mafqood
+        fields = '__all__'
+        widgets = {'disaster': forms.HiddenInput()}
+
+    def __init__(self, *args, **kwargs):
+        self.request = kwargs.pop("request")
+        super(ReportMissing, self).__init__(*args, **kwargs)
+
+        if not self.request.POST:
+            # Set disaster
+            self.fields['disaster'].queryset = Disaster.objects.filter(id=self.request.disaster.id)
+            self.fields['disaster'].initial = self.request.disaster
+
+    def clean(self):
+        cleaned_data = self.cleaned_data
+        return cleaned_data
 
 
 def report_missing(request, disaster):
