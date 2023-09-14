@@ -65,10 +65,13 @@
                 <div class="column is-narrow is-half">{{report_form.reporter_surname|bulma}}</div>
             </div>
 
-            {{report_form.reporter_relation_to_missing|bulma}}
+            <div class="columns">
+                <div class="column is-narrow is-half">{{report_form.reporter_relation_to_missing|bulma}}</div>
+                <div class="column is-narrow is-half">{{report_form.reporter_contact_number|bulma}}</div>
+            </div>
 
             <div class="columns">
-                <div class="column is-narrow is-half">{{report_form.reporter_contact_number|bulma}}</div>
+                <div class="column is-narrow is-half">{{report_form.reporter_email|bulma}}</div>
                 <div class="column is-narrow is-half">{{report_form.reporter_contact_number_2|bulma}}</div>
             </div>
 
@@ -77,8 +80,9 @@
                 <div class="column is-narrow is-three-quarters">{{report_form.reporter_address|bulma}}</div>
             </div>
             </br>
-            <button class="button is-warning" type="submit" style="font-weight:bold">ارسل التبيغ</button>
-
+            <div class="is-size-2 has-text-centered">
+                <button class="report_button button is-warning is-medium" type="submit" style="min-width:22%">ارسل التبليغ</button>
+            </div>
         </form>
     </div>
 </div>

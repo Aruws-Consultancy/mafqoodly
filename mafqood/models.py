@@ -35,8 +35,9 @@ class Mafqood(models.Model):
     # Contact person
     reporter_name = models.CharField(max_length=255, blank=True, null=True, verbose_name="الاسم")
     reporter_surname = models.CharField(max_length=255, blank=True, null=True, verbose_name="اللقب")
+    reporter_email = models.CharField(max_length=255, blank=True, null=True, verbose_name="البريد الالكتروني")
     reporter_contact_number = PhoneNumberField(blank=True, null=True, verbose_name="رقم الهاتف")
-    reporter_contact_number_2 = PhoneNumberField(blank=True, null=True, verbose_name="رقم الهاتف 2")
+    reporter_contact_number_2 = PhoneNumberField(blank=True, null=True, verbose_name="رقم الهاتف اضافي")
     reporter_relation_to_missing = models.CharField(max_length=255, blank=True, null=True, verbose_name="صلة القرابة للمفقود")
     reporter_city = models.CharField(max_length=255, blank=True, null=True, verbose_name="المدينة")
     reporter_address = models.CharField(max_length=255, blank=True, null=True, verbose_name="عنوان السكن")
