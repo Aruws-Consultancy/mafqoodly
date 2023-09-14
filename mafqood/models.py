@@ -2,8 +2,9 @@ from django.db import models
 from datetime import date, timedelta
 from config.constants import Options
 from disaster.models import Disaster
-from phonenumber_field.modelfields import PhoneNumberField
+from django.core.validators import RegexValidator
 
+onlynumbers = RegexValidator(r'^[0-9]', 'Only numbers are allowed.')
 
 class Mafqood(models.Model):
 
@@ -18,7 +19,7 @@ class Mafqood(models.Model):
 
     address = models.CharField(max_length=255, blank=True, null=True, verbose_name="عنوان السكن")
     city = models.CharField(max_length=255, blank=True, null=True, verbose_name="المدينة")
-    contact_number = PhoneNumberField(blank=True, null=True, verbose_name="رقم الهاتف")
+    contact_number = models.CharField(max_length=14, blank=True, null=True, validators=[onlynumbers], verbose_name="رقم الهاتف")
 
     last_contact_date = models.DateTimeField(auto_now_add=False, blank=False, null=False, verbose_name="تاريخ الاختفاء")
 
@@ -36,8 +37,8 @@ class Mafqood(models.Model):
     reporter_name = models.CharField(max_length=255, blank=True, null=True, verbose_name="الاسم")
     reporter_surname = models.CharField(max_length=255, blank=True, null=True, verbose_name="اللقب")
     reporter_email = models.CharField(max_length=255, blank=True, null=True, verbose_name="البريد الالكتروني")
-    reporter_contact_number = PhoneNumberField(blank=True, null=True, verbose_name="رقم الهاتف")
-    reporter_contact_number_2 = PhoneNumberField(blank=True, null=True, verbose_name="رقم الهاتف اضافي")
+    reporter_contact_number = models.CharField(max_length=14, blank=True, null=True, validators=[onlynumbers], verbose_name="رقم الهاتف")
+    reporter_contact_number_2 = models.CharField(max_length=14, blank=True, null=True, validators=[onlynumbers], verbose_name="رقم الهاتف اضافي")
     reporter_relation_to_missing = models.CharField(max_length=255, blank=True, null=True, verbose_name="صلة القرابة للمفقود")
     reporter_city = models.CharField(max_length=255, blank=True, null=True, verbose_name="المدينة")
     reporter_address = models.CharField(max_length=255, blank=True, null=True, verbose_name="عنوان السكن")

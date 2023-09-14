@@ -24,6 +24,7 @@ def report_missing(request, disaster):
             messages.success(request, ('Thank you for your Report'))
             return redirect("disaster:main")
         else:
+            print(report_form.errors)
             messages.error(request, 'Error sending this report')
 
     report_form = ReportMissing(request=request)
