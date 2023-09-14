@@ -11,82 +11,89 @@
 </br>
 <div class="is-size-4 has-text-right" style="direction: rtl; padding-top:0px;">
     <strong>{{message}}</strong>
-    <div class="container" style="padding:0 50px;">
+    <div class="container report_form_container">
         <br method="post" enctype="multipart/form-data">
-            <form method="POST" >
-                {% csrf_token %}
-                <div class="column is-narrow is-half" style="display:None">{{report_form.disaster|bulma}}</div>
+        <form method="POST" >
+            {% csrf_token %}
+            <div class="column is-narrow is-half" style="display:None">{{report_form.disaster|bulma}}</div>
 
-                <div style="margin:0px 0 30px 0; padding-bottom:5px; border-bottom:2px white solid;">
-                    معلومات المفقود
-                </div>
 
-                <div class="columns">
-                    <div class="column is-narrow is-half required_field">{{report_form.name|bulma}}</div>
-                    <div class="column is-narrow is-half required_field">{{report_form.surname|bulma}}</div>
-                </div>
+            <div style="margin:0px 0 10px 0; padding-bottom:5px; border-bottom:2px white solid;">
+                معلومات المفقود
+            </div>
+            <div class="is-size-5" style="margin:0px 0 15px 0;">
+                تعد المعلومات التي تقدمها عن الشخص المفقود أساسية للتعرف عليه بدقه وفعالية خصوصا في حالات الإصابة أو وجود ضرر، وكلما كانت دقيقه ومفصله كانت فرق الانقاذ والبحث أقدر على تمييز الشخص والتعرف عليه، لذلك نأمل تزويدنا بمعلومات مفصلة ودقيقة.
+            </div>
 
-                <div class="columns">
-                    <div class="column is-narrow is-one-third">{{report_form.date_of_birth|bulma}}</div>
-                    <div class="column is-narrow is-one-third">{{report_form.age|bulma}}</div>
-                    <div class="column is-narrow is-one-third required_field">{{report_form.last_contact_date|bulma}}</div>
-                </div>
+            <div class="columns">
+                <div class="column is-narrow is-half required_field">{{report_form.name|bulma}}</div>
+                <div class="column is-narrow is-half required_field">{{report_form.surname|bulma}}</div>
+            </div>
 
-                <div style="margin:0px 0 30px 0; padding-bottom:5px; border-bottom:1px white dashed;"> </div>
+            <div class="columns">
+                <div class="column is-narrow is-one-third">{{report_form.date_of_birth|bulma}}</div>
+                <div class="column is-narrow is-one-third">{{report_form.age|bulma}}</div>
+                <div class="column is-narrow is-one-third required_field">{{report_form.last_contact_date|bulma}}</div>
+            </div>
 
-                <div class="columns">
-                    <div class="column is-narrow is-one-third required_field">{{report_form.city|bulma}}</div>
-                    <div class="column is-narrow is-one-third">{{report_form.address|bulma}}</div>
-                    <div class="column is-narrow is-one-third">{{report_form.contact_number|bulma}}</div>
-                </div>
+            <div style="margin:0px 0 30px 0; padding-bottom:5px; border-bottom:1px white dashed;"> </div>
 
-                <div style="margin:0px 0 30px 0; padding-bottom:5px; border-bottom:1px white dashed;"> </div>
+            <div class="columns">
+                <div class="column is-narrow is-one-third required_field">{{report_form.city|bulma}}</div>
+                <div class="column is-narrow is-one-third">{{report_form.address|bulma}}</div>
+                <div class="column is-narrow is-one-third">{{report_form.contact_number|bulma}}</div>
+            </div>
 
-                <div class="columns">
-                    <div class="column is-narrow is-one-quarter required_field">{{report_form.gender|bulma}}</div>
-                    <div class="column is-narrow is-one-quarter">{{report_form.weight|bulma}}</div>
-                    <div class="column is-narrow is-one-quarter">{{report_form.height|bulma}}</div>
-                    <div class="column is-narrow is-one-quarter">{{report_form.blod_type|bulma}}</div>
-                </div>
+            <div style="margin:0px 0 30px 0; padding-bottom:5px; border-bottom:1px white dashed;"> </div>
 
-                <div class="columns">
-                    <div class="column is-narrow is-half">{{report_form.clothing|bulma}}</div>
-                    <div class="column is-narrow is-half">{{report_form.distinct_feature|bulma}}</div>
-                </div>
-                <div style="margin:0px 0 30px 0; padding-bottom:5px; border-bottom:1px white dashed;"> </div>
+            <div class="columns">
+                <div class="column is-narrow is-one-quarter required_field">{{report_form.gender|bulma}}</div>
+                <div class="column is-narrow is-one-quarter">{{report_form.weight|bulma}}</div>
+                <div class="column is-narrow is-one-quarter">{{report_form.height|bulma}}</div>
+                <div class="column is-narrow is-one-quarter">{{report_form.blod_type|bulma}}</div>
+            </div>
 
-                {{report_form.any_other_details|bulma}}
-                {{report_form.photograph|bulma}}
+            <div class="columns">
+                <div class="column is-narrow is-half">{{report_form.clothing|bulma}}</div>
+                <div class="column is-narrow is-half">{{report_form.distinct_feature|bulma}}</div>
+            </div>
+            <div style="margin:0px 0 30px 0; padding-bottom:5px; border-bottom:1px white dashed;"> </div>
 
-                <div style="margin:50px 0 30px 0; padding-bottom:5px; border-bottom:2px white solid;">
-                    معلومات المبلغ
-                </div>
+            {{report_form.any_other_details|bulma}}
+            {{report_form.photograph|bulma}}
 
-                <div class="columns">
-                    <div class="column is-narrow is-half">{{report_form.reporter_name|bulma}}</div>
-                    <div class="column is-narrow is-half">{{report_form.reporter_surname|bulma}}</div>
-                </div>
+            <div style="margin:50px 0 30px 0; padding-bottom:5px; border-bottom:2px white solid;">
+                معلومات المبلغ
+            </div>
 
-                <div class="columns">
-                    <div class="column is-narrow is-half">{{report_form.reporter_relation_to_missing|bulma}}</div>
-                    <div class="column is-narrow is-half">{{report_form.reporter_contact_number|bulma}}</div>
-                </div>
+            <div class="columns">
+                <div class="column is-narrow is-half">{{report_form.reporter_name|bulma}}</div>
+                <div class="column is-narrow is-half">{{report_form.reporter_surname|bulma}}</div>
+            </div>
 
-                <div class="columns">
-                    <div class="column is-narrow is-half">{{report_form.reporter_email|bulma}}</div>
-                    <div class="column is-narrow is-half">{{report_form.reporter_contact_number_2|bulma}}</div>
-                </div>
+            <div class="columns">
+                <div class="column is-narrow is-half">{{report_form.reporter_relation_to_missing|bulma}}</div>
+                <div class="column is-narrow is-half">{{report_form.reporter_contact_number|bulma}}</div>
+            </div>
 
-                <div class="columns">
-                    <div class="column is-narrow is-one-quarter">{{report_form.reporter_city|bulma}}</div>
-                    <div class="column is-narrow is-three-quarters">{{report_form.reporter_address|bulma}}</div>
-                </div>
-                </br>
-                <div class="is-size-2 has-text-centered">
-                    <button class="report_button button is-warning is-medium" type="submit" style="min-width:22%">ارسل التبليغ</button>
-                </div>
-            </form>
+            <div class="columns">
+                <div class="column is-narrow is-half">{{report_form.reporter_email|bulma}}</div>
+                <div class="column is-narrow is-half">{{report_form.reporter_contact_number_2|bulma}}</div>
+            </div>
+
+            <div class="columns">
+                <div class="column is-narrow is-one-quarter">{{report_form.reporter_city|bulma}}</div>
+                <div class="column is-narrow is-three-quarters">{{report_form.reporter_address|bulma}}</div>
+            </div>
+            </br>
+            <div class="is-size-2 has-text-centered">
+                <button class="report_button button is-warning is-medium" type="submit" style="min-width:22%">ارسل التبليغ</button>
+            </div>
         </form>
+        <div class="is-size-6 has-text-centered" style="padding: 5px 10px">
+بإدخالك البيانات الواردة في هذا النموذج، تقر بأنها مخزنة في قواعد بياناتنا لغرض البحث والتحليل وسيتم مشاركتها مع المؤسسات الحكومية والمؤسسات المدنية التي تعمل على البحث على المفقودين.
+يمكنك دائما طلب حذف البيانات التي ادخلتها من خلال التواصل معنا على data_request@mafqood.ly
+        </div>
     </div>
 </div>
 
