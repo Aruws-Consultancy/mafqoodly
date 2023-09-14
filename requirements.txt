@@ -1,6 +1,7 @@
 Django==4.1.3
 django-glrm
 pandas
+gunicorn
 django-multiselectfield
 django-cors-headers
 python-dotenv
@@ -10,8 +11,10 @@ markdown
 celery[redis]==5.2.7
 django-celery-beat==2.4.0
 openpyxl
+requests
 pytest
 pytest-django
+django-environ
 pytest-mock==3.10.0
 mock
 model_bakery==1.9.0
