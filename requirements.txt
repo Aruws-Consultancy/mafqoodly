@@ -20,3 +20,4 @@ Pillow
 django-phone-field
 django-crispy-forms
 crispy-bulma
+django-bulma
