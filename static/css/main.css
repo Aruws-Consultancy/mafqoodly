@@ -17,7 +17,7 @@ body {background:#1a1a1a !important; color:white; font-family: system-ui;}
 /* main content ----------------------------------------------------------------------------------- */
 .main_content {margin-top:0; padding-top:0;}
 .missing_counter {margin-top: -2em; margin-bottom:5px;}
-.missing_counter span {background:#3a3a3a90; text-align: center; }
+.missing_counter span {background:#1c1c1c90; text-align: center; }
 .disaster_name {padding:5px;}
 .disaster_image {width:auto; height:20em; margin-top: -3em; margin-bottom:1em}
 .report_button {font-family:system-ui; font-weight:bold !important}

@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import render_to_string
 from django.views.generic import TemplateView
-from .forms import ReportMissing
+from mafqood.forms import ReportMissing
 from mafqood.models import Mafqood
 from disaster.models import Disaster
 
