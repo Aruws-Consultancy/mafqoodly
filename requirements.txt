@@ -5,7 +5,6 @@ django-multiselectfield
 django-cors-headers
 python-dotenv
 psycopg2-binary
-mysqlclient
 djangorestframework==3.14.0
 markdown
 celery[redis]==5.2.7
@@ -22,3 +21,4 @@ django-phone-field
 django-crispy-forms
 crispy-bulma
 django-bulma
+mysqlclient
