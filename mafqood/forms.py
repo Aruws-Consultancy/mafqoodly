@@ -17,10 +17,9 @@ class ReportMissing(forms.ModelForm):
         self.request = kwargs.pop("request")
         super(ReportMissing, self).__init__(*args, **kwargs)
 
-        if not self.request.POST:
-            # Set disaster
-            self.fields['disaster'].queryset = Disaster.objects.filter(id=self.request.disaster.id)
-            self.fields['disaster'].initial = self.request.disaster
+        # Set disaster
+        self.fields['disaster'].queryset = Disaster.objects.filter(id=self.request.disaster.id)
+        self.fields['disaster'].initial = self.request.disaster
 
     def clean(self):
         cleaned_data = self.cleaned_data

@@ -22,10 +22,9 @@ def report_missing(request, disaster):
         if report_form.is_valid():
             report_form.save()
             messages.success(request, ('Thank you for your Report'))
+            return redirect("disaster:main")
         else:
             messages.error(request, 'Error sending this report')
-
-        return redirect("disaster:main")
 
     report_form = ReportMissing(request=request)
     context = {'disaster': disaster, 'report_form': report_form}

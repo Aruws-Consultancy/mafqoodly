@@ -10,8 +10,8 @@ class Mafqood(models.Model):
     disaster = models.ForeignKey(Disaster, related_name='missings', null=False, blank=False, on_delete=models.CASCADE)
 
     # Missing Person
-    name = models.CharField(max_length=255, blank=True, null=True, verbose_name="الاسم")
-    surname = models.CharField(max_length=255, blank=True, null=True, verbose_name="اللقب")
+    name = models.CharField(max_length=255, blank=False, null=False, verbose_name="الاسم")
+    surname = models.CharField(max_length=255, blank=False, null=False, verbose_name="اللقب")
 
     date_of_birth = models.DateField(blank=True, null=True, verbose_name="تاريخ الميلاد")
     age = models.IntegerField(blank=True, null=True, verbose_name="العمر")
@@ -20,9 +20,9 @@ class Mafqood(models.Model):
     city = models.CharField(max_length=255, blank=True, null=True, verbose_name="المدينة")
     contact_number = PhoneNumberField(blank=True, null=True, verbose_name="رقم الهاتف")
 
-    last_contact_date = models.DateTimeField(auto_now_add=False, blank=True, null=True, verbose_name="تاريخ الاختفاء")
+    last_contact_date = models.DateTimeField(auto_now_add=False, blank=False, null=False, verbose_name="تاريخ الاختفاء")
 
-    gender = models.CharField(max_length=10, null=True, blank=True, choices=Options.mafqood['gender'], verbose_name="جنس")
+    gender = models.CharField(max_length=10, null=False, blank=False, choices=Options.mafqood['gender'], verbose_name="الجنس")
     weight = models.IntegerField(blank=True, null=True, verbose_name="الوزن")
     height = models.IntegerField(blank=True, null=True, verbose_name="الطول")
     blod_type = models.CharField(max_length=10, null=True, blank=True, choices=Options.mafqood['blod_type'], verbose_name="فصيلة الدم")

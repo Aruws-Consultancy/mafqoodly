@@ -27,6 +27,7 @@ body {background:#1a1a1a !important; color:white; font-family: system-ui;}
 .label {color:white !important}
 .select, .select select{ width: 100%;}
 textarea { height: 70px !important;}
+.required_field div label {color: #f4e01c !important}
 
 /* response ----------------------------------------------------------------------------------- */
 @media only screen and (max-width: 800px) {
