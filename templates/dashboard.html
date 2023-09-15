@@ -1,0 +1,54 @@
+{% extends 'base.html'%}
+{% load static %}
+{% load bulma_tags %}
+
+{% block content %}
+
+{% if disaster.image %}
+    <div class="disaster_image" style="background-image:url('/media/{{disaster.image}}'); width:100%">
+        <div style="background-image: linear-gradient(to bottom right, #1a1a1a00, #1a1a1a70, #1a1a1a); height:100%; width:100%"> </div>
+    </div>
+    <div > </div>
+{% else %}
+    <div style="height:6em;"> </div>
+{% endif %}
+
+<div class="is-size-2 has-text-centered" style="margin-top: -10px">
+    <div class="disaster_name"> {{disaster.name}}</div>
+</div>
+
+<div class="is-size-4" style="padding-top:30px;">
+    <div class="container report_form_container">
+
+        <div class="columns">
+            <div class="column is-wide">
+                <button class="button is-fullwidth is-grey">Total Count: {{total_count}}</button>
+            </div>
+        </div>
+
+        <div>Gender</div>
+        <div class="columns">
+            <div class="column is-narrow is-half">
+                <button class="button is-fullwidth is-info">Total Males: {{male_count}}</button>
+            </div>
+            <div class="column is-narrow is-half">
+                <button class="button is-fullwidth is-danger">Total Females: {{female_count}}</button>
+            </div>
+        </div>
+
+        <div>Age</div>
+
+        <div class="columns">
+            {% for age_group, total in age.items %}
+            <div class="column is_wide">
+                <button class="button is-fullwidth is-primary">{{age_group}}: {{total}}</button>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+
+</div>
+</br>
+{% endblock %}

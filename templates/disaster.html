@@ -2,6 +2,16 @@
 {% load static %}
 
 {% block content %}
+
+<div class="admin_buttons">
+{% if user.is_authenticated %}
+    <a href="disaster/{{disaster.id}}/mafqood/dashboard" class="button is-narrow is-danger is-small">Stats</a>
+    <a href="disaster/{{disaster.id}}/person/report_new_person" class="button is-narrow is-warning is-small">اضف حالة شخص</a>
+{% else %}
+    <a href="/accounts/login" class="button is-narrow is-warning is-small">Login</a>
+{% endif %}
+</div>
+
 {% if disaster.image %}
     <div class="disaster_image" style="background-image:url('/media/{{disaster.image}}'); width:100%">
         <div style="background-image: linear-gradient(to bottom right, #1a1a1a00, #1a1a1a70, #1a1a1a); height:100%; width:100%"> </div>
@@ -10,15 +20,6 @@
 {% else %}
     <div style="height:6em;"> </div>
 {% endif %}
-
-<div class="admin_buttons">
-{% if user.is_authenticated %}
-    <a href="/admin" class="button is-narrow is-danger is-small">ِAdmin</a>
-    <a href="disaster/{{disaster.id}}/person/report_new_person" class="button is-narrow is-warning is-small">اضف حالة شخص</a>
-{% else %}
-    <a href="/accounts/login" class="button is-narrow is-warning is-small">Login</a>
-{% endif %}
-</div>
 
 <strong>{{message}}</strong>
 

@@ -37,9 +37,27 @@ def report_missing(request, disaster):
 @login_required()
 def missing_dashboard(request, disaster):
     disaster = get_object_or_404(Disaster, id=disaster)
-    request.disaster = disaster
+
+    mafqood_data = disaster.missings.all()
+
+    # Update Age:
+    age_update_set = mafqood_data.filter(age__isnull=True, date_of_birth__isnull=False)
+    for i in age_update_set:
+        i.age = i.calc_age()
+        i.save()
+
     context = {'disaster': disaster,
-               'report_form': report_form}
+               'total_count': mafqood_data.count(),
+               'male_count': mafqood_data.filter(gender='male').count(),
+               'female_count': mafqood_data.filter(gender='female').count(),
+               'age': {'less than 3': mafqood_data.filter(age__lte=3, age__gt=0).count(),
+                       '3 - 16': mafqood_data.filter(age__lte=16,age__gt=3).count(),
+                       '16 - 30 ': mafqood_data.filter(age__lte=30, age__gt=16).count(),
+                       '30 - 60 ': mafqood_data.filter(age__lte=60, age__gt=30).count(),
+                       '60+': mafqood_data.filter(age__gt=60).count(),
+                       'Unknown': mafqood_data.filter(age__isnull=True).count()
+                    }
+               }
 
     return render(request=request, template_name="dashboard.html", context=context)
 

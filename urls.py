@@ -22,7 +22,6 @@ urlpatterns = [
 
     # LOGIN
     path('accounts/', include('django.contrib.auth.urls')),
-    path('accounts/profile/', disaster_views.disaster),
 
     # Disaster
     path('', disaster_views.disaster, name='main'),
@@ -30,6 +29,7 @@ urlpatterns = [
 
     # Mafqood
     path('disaster/<int:disaster>/mafqood/report_missing', mafqood_views.report_missing, name='report_missing'),
+    path('disaster/<int:disaster>/mafqood/dashboard', mafqood_views.missing_dashboard, name='missing_dashboard'),
 
     # Person
     path('disaster/<int:disaster>/person/report_new_person', mafqood_views.report_new_person, name='report_new_person'),
