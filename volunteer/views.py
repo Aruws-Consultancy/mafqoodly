@@ -1,6 +1,5 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
-from disaster.models import Disaster
 from volunteer.forms import NewVolunteer
 
 
@@ -12,7 +11,7 @@ def new_volunteer(request):
         if new_volunteer_form.is_valid():
             new_volunteer_form.save()
             messages.success(request, ('Thank you for your Report'))
-            return redirect("disaster:main")
+            return redirect("main")
         else:
             print(new_volunteer_form.errors)
             messages.error(request, 'Error sending this report')

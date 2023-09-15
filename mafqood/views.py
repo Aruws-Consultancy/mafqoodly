@@ -24,7 +24,7 @@ def report_missing(request, disaster):
         if report_form.is_valid():
             report_form.save()
             messages.success(request, ('Thank you for your Report'))
-            return redirect("disaster:main")
+            return redirect("main")
         else:
             print(report_form.errors)
             messages.error(request, 'Error sending this report')
@@ -76,7 +76,7 @@ def report_new_person(request, disaster):
         if new_person_form.is_valid():
             new_person_form.save()
             messages.success(request, ('Thank you for your Report'))
-            return redirect("disaster:main")
+            return redirect("main")
         else:
             print(new_person_form.errors)
             messages.error(request, 'Error sending this report')
