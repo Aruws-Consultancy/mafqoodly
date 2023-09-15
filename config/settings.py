@@ -101,7 +101,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LOGIN_URL = "/admin/login/"
+LOGIN_URL = "/accounts/login/"
 
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'

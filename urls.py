@@ -20,6 +20,10 @@ urlpatterns = [
     # Django Admin
     path('admin/', admin.site.urls),
 
+    # LOGIN
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/profile/', disaster_views.disaster),
+
     # Disaster
     path('', disaster_views.disaster, name='main'),
     path('disaster/<int:disaster>', disaster_views.disaster, name='view_disaster'),

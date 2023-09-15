@@ -23,7 +23,7 @@ body {background:#1a1a1a !important; color:white; font-family: system-ui;}
 .report_button {font-family:system-ui; font-weight:bold !important}
 .report_form_container {padding: 0 50px;}
 .admin_buttons {position:fixed; top:50px; padding-left: 20px; }
-
+.button {font-weight:bold !important}
 
 /* forms ----------------------------------------------------------------------------------- */
 .label {color:white !important}

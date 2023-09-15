@@ -35,6 +35,16 @@ def report_missing(request, disaster):
 
 
 @login_required()
+def missing_dashboard(request, disaster):
+    disaster = get_object_or_404(Disaster, id=disaster)
+    request.disaster = disaster
+    context = {'disaster': disaster,
+               'report_form': report_form}
+
+    return render(request=request, template_name="dashboard.html", context=context)
+
+
+@login_required()
 def report_new_person(request, disaster):
     disaster = get_object_or_404(Disaster, id=disaster)
     request.disaster = disaster
