@@ -40,7 +40,7 @@ def missing_dashboard(request, disaster):
     disaster = get_object_or_404(Disaster, id=disaster)
 
     # Update Age:
-    age_update_set = disaster.missings.filter(Q(age__isnull=True) | Q(age=0), date_of_birth__isnull=False)
+    age_update_set = disaster.missings.filter(Q(age__isnull=True) | Q(age=0)).filter(date_of_birth__isnull=False)
     for i in age_update_set:
         i.age = i.calc_age()
         i.save()
