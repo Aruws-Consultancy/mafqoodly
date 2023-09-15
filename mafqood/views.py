@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from mafqood.models import Mafqood
 from disaster.models import Disaster
 from mafqood.forms import ReportMissing, NewPerson
@@ -38,13 +39,14 @@ def report_missing(request, disaster):
 def missing_dashboard(request, disaster):
     disaster = get_object_or_404(Disaster, id=disaster)
 
-    mafqood_data = disaster.missings.all()
-
     # Update Age:
-    age_update_set = mafqood_data.filter(age__isnull=True, date_of_birth__isnull=False)
+    age_update_set = disaster.missings.filter(Q(age__isnull=True) | Q(age=0), date_of_birth__isnull=False)
     for i in age_update_set:
         i.age = i.calc_age()
         i.save()
+
+    # Geta ll missings date
+    mafqood_data = disaster.missings.all()
 
     context = {'disaster': disaster,
                'total_count': mafqood_data.count(),
@@ -55,7 +57,7 @@ def missing_dashboard(request, disaster):
                        '16 - 30 ': mafqood_data.filter(age__lte=30, age__gt=16).count(),
                        '30 - 60 ': mafqood_data.filter(age__lte=60, age__gt=30).count(),
                        '60+': mafqood_data.filter(age__gt=60).count(),
-                       'Unknown': mafqood_data.filter(age__isnull=True).count()
+                       'Unknown': mafqood_data.filter(Q(age__isnull=True) | Q(age=0)).count()
                     }
                }
 
