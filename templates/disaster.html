@@ -13,6 +13,7 @@
 
 {% if user.is_authenticated %}
     <div class="admin_buttons">
+        <a href="/admin" class="button is-narrow is-danger is-small">ِAdmin</a>
         <a href="disaster/{{disaster.id}}/person/report_new_person" class="button is-narrow is-warning is-small">اضف حالة شخص</a>
     </div>
 {% endif %}
