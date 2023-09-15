@@ -55,6 +55,8 @@ class Mafqood(models.Model):
         return f'{self.name} {self.surname}'
 
     def calc_age(self):
+        print(self.age)
+        print(self.date_of_birth)
         return (date.today() - self.date_of_birth) // timedelta(days=365.2425)
 
     def save(self, *args, **kwargs):
