@@ -12,6 +12,7 @@ class Disaster(models.Model):
     is_main_focus = models.BooleanField(default=True)
 
     created = models.DateTimeField(auto_now_add=True)
+    closed = models.DateTimeField(auto_now_add=False, blank=True, null=True)
 
     def __str__(self):
         return self.name
