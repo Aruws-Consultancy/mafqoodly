@@ -24,10 +24,10 @@ class Mafqood(models.Model):
 
     last_contact_date = models.DateTimeField(auto_now_add=False, blank=False, null=False, verbose_name="تاريخ الاختفاء")
 
-    gender = models.CharField(max_length=10, null=False, blank=False, choices=Options.mafqood['gender'], verbose_name="الجنس")
+    gender = models.CharField(max_length=10, null=False, blank=False, choices=Options.general['gender'], verbose_name="الجنس")
     weight = models.IntegerField(blank=True, null=True, verbose_name="الوزن")
     height = models.IntegerField(blank=True, null=True, verbose_name="الطول")
-    blod_type = models.CharField(max_length=10, null=True, blank=True, choices=Options.mafqood['blod_type'], verbose_name="فصيلة الدم")
+    blod_type = models.CharField(max_length=10, null=True, blank=True, choices=Options.general['blod_type'], verbose_name="فصيلة الدم")
 
     clothing = models.CharField(max_length=10, null=True, blank=True, verbose_name="ملابس")
     distinct_feature = models.CharField(max_length=255, blank=True, null=True, verbose_name="ملامح مميزة")
@@ -82,10 +82,10 @@ class Person(models.Model):
 
     current_location = models.CharField(max_length=255, blank=True, null=True, verbose_name="الموقع الحالي")
 
-    gender = models.CharField(max_length=10, null=False, blank=False, choices=Options.mafqood['gender'], verbose_name="الجنس")
+    gender = models.CharField(max_length=10, null=False, blank=False, choices=Options.general['gender'], verbose_name="الجنس")
     weight = models.IntegerField(blank=True, null=True, verbose_name="الوزن")
     height = models.IntegerField(blank=True, null=True, verbose_name="الطول")
-    blod_type = models.CharField(max_length=10, null=True, blank=True, choices=Options.mafqood['blod_type'], verbose_name="فصيلة الدم")
+    blod_type = models.CharField(max_length=10, null=True, blank=True, choices=Options.general['blod_type'], verbose_name="فصيلة الدم")
 
     clothing = models.CharField(max_length=10, null=True, blank=True, verbose_name="ملابس")
     distinct_feature = models.CharField(max_length=255, blank=True, null=True, verbose_name="ملامح مميزة")

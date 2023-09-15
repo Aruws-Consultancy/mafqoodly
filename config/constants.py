@@ -1,5 +1,9 @@
 class Options:
-    mafqood = {
+    general = {
+        "gender": (
+            ("male", "ذكر"),
+            ("female", "انثى"),
+        ),
         "blod_type": (
             ("O+", "O+"),
             ("O-", "O-"),
@@ -10,10 +14,9 @@ class Options:
             ("AB", "AB+"),
             ("AB-", "AB-"),
         ),
-        "gender": (
-            ("male", "ذكر"),
-            ("female", "انثى"),
-        ),
+    }
+
+    mafqood = {
         "status": (
             ("missing", "Missing"),
             ("found", "Found"),
@@ -27,5 +30,12 @@ class Options:
             ("deceased", "Deceased"),
             ("buried", "Buried"),
             ("idp", "IDP"),
+        )
+    }
+
+    volunteer = {
+        "status": (
+            ("active", "Active"),
+            ("inactive", "InActive"),
         )
     }

@@ -6,6 +6,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from disaster import views as disaster_views
 from mafqood import views as mafqood_views
+from volunteer import views as volunteer_views
+from pages import views as static_pages_views
 
 favicon_view = RedirectView.as_view(url='/static/favicon.ico', permanent=True)
 admin.site.site_header = 'Mafqood - Admin'
@@ -34,5 +36,10 @@ urlpatterns = [
     # Person
     path('disaster/<int:disaster>/person/report_new_person', mafqood_views.report_new_person, name='report_new_person'),
 
+    # Volunteer
+    path('volunteer/new_volunteer', volunteer_views.new_volunteer, name='new_volunteer'),
+
+    # Static Pages
+    path('media', static_pages_views.media, name='media'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

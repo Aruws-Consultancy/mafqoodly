@@ -25,6 +25,8 @@ INSTALLED_APPS = [
     # Core Apps
     'disaster',
     'mafqood',
+    'volunteer',
+    'pages',
 
     # Django Basic Apps
     'django.contrib.admin',

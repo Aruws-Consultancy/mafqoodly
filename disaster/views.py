@@ -4,6 +4,10 @@ from django.views.generic import TemplateView
 from disaster.models import Disaster
 
 
+def media(request):
+    return render(request, "media.html")
+
+
 def disaster(request, disaster=None):
     if disaster:
         disaster = Disaster.objects.get(name=disaster)
