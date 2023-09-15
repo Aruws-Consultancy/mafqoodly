@@ -18,5 +18,14 @@ class Options:
             ("missing", "Missing"),
             ("found", "Found"),
             ("deceased", "Deceased"),
+        ),
+    }
+
+    people = {
+        "status": (
+            ("injured", "Injured"),
+            ("deceased", "Deceased"),
+            ("buried", "Buried"),
+            ("idp", "IDP"),
         )
     }

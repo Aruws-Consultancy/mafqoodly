@@ -6,8 +6,15 @@
     <div class="disaster_image" style="background-image:url('/media/{{disaster.image}}'); width:100%">
         <div style="background-image: linear-gradient(to bottom right, #1a1a1a00, #1a1a1a70, #1a1a1a); height:100%; width:100%"> </div>
     </div>
+    <div > </div>
 {% else %}
     <div style="height:6em;"> </div>
+{% endif %}
+
+{% if user.is_authenticated %}
+    <div class="admin_buttons">
+        <a href="disaster/{{disaster.id}}/person/report_new_person" class="button is-narrow is-warning is-small">اضف حالة شخص</a>
+    </div>
 {% endif %}
 
 <strong>{{message}}</strong>
@@ -21,7 +28,7 @@
 
 <div class="is-size-2 has-text-centered">
     <div class="disaster_name"> {{disaster.name}}</div>
-    <a class="report_button button is-danger is-medium" style="min-width:22%" href="disaster/{{disaster.id}}/mafqood/report" >بلغ عن مفقود</a>
+    <a class="report_button button is-danger is-medium" style="min-width:22%" href="disaster/{{disaster.id}}/mafqood/report_missing" >بلغ عن مفقود</a>
 </div>
 </br>
 </br>
