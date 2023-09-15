@@ -10,7 +10,7 @@ def disaster(request, disaster=None):
     else:
         disaster = Disaster.objects.get(is_main_focus=True)
 
-    counter = int(3129) + int(disaster.missings.all().count())
+    counter = int(280) + int(disaster.missings.all().count())
     if counter < 10000:
         counter = f'0{counter}'
     content = {'disaster':disaster, 'counter':str(counter)}

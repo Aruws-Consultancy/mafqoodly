@@ -31,3 +31,4 @@ def report_missing(request, disaster):
     context = {'disaster': disaster, 'report_form': report_form}
 
     return render(request=request, template_name="mafqood.html", context=context)
+
