@@ -43,7 +43,7 @@ class Mafqood(models.Model):
     reporter_city = models.CharField(max_length=255, blank=True, null=True, verbose_name="المدينة")
     reporter_address = models.CharField(max_length=255, blank=True, null=True, verbose_name="عنوان السكن")
 
-    status = models.CharField(max_length=50, null=True, blank=True, choices=Options.mafqood['status'])
+    status = models.CharField(max_length=50, null=True, blank=True, default="missing", choices=Options.mafqood['status'])
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

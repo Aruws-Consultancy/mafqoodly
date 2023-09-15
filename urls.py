@@ -6,6 +6,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 favicon_view = RedirectView.as_view(url='/static/favicon.ico', permanent=True)
+admin.site.site_header = 'Mafqood - Admin'
+admin.site.index_title = 'Mafqood.ly'
+
 
 urlpatterns = [
 

@@ -22,6 +22,10 @@ WSGI_APPLICATION = 'config.wsgi.application'
 ALLOWED_HOSTS = ['127.0.0.1', 'mafqood.org', 'mafqood.ly', 'www.mafqood.org', 'www.mafqood.ly']
 
 INSTALLED_APPS = [
+    # Core Apps
+    'disaster',
+    'mafqood',
+
     # Django Basic Apps
     'django.contrib.admin',
     'django.contrib.auth',
@@ -34,10 +38,6 @@ INSTALLED_APPS = [
     'bulma',
 
     # Installed Apps
-
-    # Core Apps
-    'disaster',
-    'mafqood',
 ]
 
 MIDDLEWARE = [
