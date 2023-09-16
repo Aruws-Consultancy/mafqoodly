@@ -3,11 +3,11 @@ from mafqood.models import Mafqood, Person
 
 
 class MafqoodAdmin(admin.ModelAdmin):
-    list_display = ('name', 'surname', 'age', 'status', 'created')
+    list_display = ('name', 'surname', 'age', 'city', 'status', 'created')
 
 
 class PersonAdmin(admin.ModelAdmin):
-    list_display = ('name', 'surname', 'age', 'status', 'created')
+    list_display = ('name', 'surname', 'age', 'city', 'status', 'created')
 
 
 admin.site.register(Mafqood, MafqoodAdmin)

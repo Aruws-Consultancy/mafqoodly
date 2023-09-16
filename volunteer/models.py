@@ -5,6 +5,18 @@ from django.core.validators import RegexValidator
 onlynumbers = RegexValidator(r'^[0-9]', 'Only numbers are allowed.')
 
 
+class Team(models.Model):
+
+    name = models.CharField(max_length=255, blank=False, null=False)
+    description = models.CharField(max_length=255, blank=False, null=False)
+
+    status = models.CharField(max_length=50, null=True, blank=True, default="new", choices=Options.volunteer['status'])
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+
+
 class Volunteer(models.Model):
 
     name = models.CharField(max_length=255, blank=False, null=False, verbose_name="الاسم")
@@ -19,10 +31,12 @@ class Volunteer(models.Model):
 
     about_volunteer = models.TextField(max_length=255, blank=True, null=True, verbose_name="نبذة عن المتطوع")
 
-    photograph = models.ImageField(upload_to='mafqood', blank=True, null=True, verbose_name="صورة")
+    photograph = models.ImageField(upload_to='volunteer', blank=True, null=True, verbose_name="صورة المتطوع")
 
     status = models.CharField(max_length=50, null=True, blank=True, default="new", choices=Options.volunteer['status'])
     created = models.DateTimeField(auto_now_add=True)
+
+    assigned_team = models.ForeignKey(Team, related_name='volunteers', null=True, blank=True, on_delete=models.SET_NULL, verbose_name="فريق العمل")
 
     def __str__(self):
         return self.full_name
@@ -30,3 +44,5 @@ class Volunteer(models.Model):
     @property
     def full_name(self):
         return f'{self.name} {self.surname}'
+
+
