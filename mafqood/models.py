@@ -56,6 +56,10 @@ class Mafqood(models.Model):
     def full_name(self):
         return f'{self.name} {self.surname}'
 
+    @property
+    def is_matched(self):
+        return True if self.matched_person else False
+
     def calc_age(self):
         if not self.date_of_birth:
             return None
@@ -103,6 +107,10 @@ class Person(models.Model):
     @property
     def full_name(self):
         return f'{self.name} {self.surname}'
+
+    @property
+    def is_matched(self):
+        return True if Mafqood.objects.filter(matched_person=self).count() > 1 else False
 
     def calc_age(self):
         return (date.today() - self.date_of_birth) // timedelta(days=365.2425)

@@ -1,6 +1,7 @@
 from django.db import models
 from config.constants import Options
 from django.core.validators import RegexValidator
+from django.contrib.auth.models import User
 
 onlynumbers = RegexValidator(r'^[0-9]', 'Only numbers are allowed.')
 
@@ -45,4 +46,10 @@ class Volunteer(models.Model):
     def full_name(self):
         return f'{self.name} {self.surname}'
 
+    @property
+    def is_current_user(self):
+        matched_users = User.objects.filter(email=self.email_address)
+        if matched_users.count() > 0:
+            return matched_users.first()
+        return None
 

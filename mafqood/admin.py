@@ -3,11 +3,17 @@ from mafqood.models import Mafqood, Person
 
 
 class MafqoodAdmin(admin.ModelAdmin):
-    list_display = ('name', 'surname', 'age', 'city', 'status', 'created')
+    list_display = ('name', 'surname', 'age', 'city', 'status', 'matched', 'created')
+
+    def matched(self, obj):
+        return obj.is_matched
 
 
 class PersonAdmin(admin.ModelAdmin):
-    list_display = ('name', 'surname', 'age', 'city', 'status', 'created')
+    list_display = ('name', 'surname', 'age', 'city', 'status', 'matched', 'created')
+
+    def matched(self, obj):
+        return obj.is_matched
 
 
 admin.site.register(Mafqood, MafqoodAdmin)
