@@ -35,6 +35,7 @@ class Options:
 
     volunteer = {
         "status": (
+            ("new", "New"),
             ("active", "Active"),
             ("inactive", "InActive"),
         )
