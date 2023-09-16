@@ -55,6 +55,8 @@
         <a class="button footer_buttons" href="/media">تغطية اعلامية</a>
         {% if not user.is_authenticated %}
         <a class="button footer_buttons is-warning is-pulled-right" href="/accounts/login" >Login</a>
+        {% else %}
+        <a class="button footer_buttons is-danger is-pulled-right" href="/accounts/logout" >log Out</a>
         {% endif %}
 
         <div class="copyright-content columns" style="padding-top:10px; margin-top:0px; display:flex;">
@@ -64,7 +66,7 @@
                 +218-931377894</br>
                 info@mafqood.ly</br>
             </div>
-            <div class="column has-text-right is-size-7" style="color:grey; width:50%; padding-top:10px;">
+            <div class="column has-text-right is-size-7" style="color:grey; width:50%; padding-top:13px;">
                 <a href="http://www.aruws.com"><img src="/static/img/aruws_logo.svg" width="50px" style="float:right;"></a>
                 </br></br></br>
                 Supported by ARUWS Ltd
