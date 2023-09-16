@@ -47,6 +47,8 @@ class Mafqood(models.Model):
     status = models.CharField(max_length=50, null=True, blank=True, default="missing", choices=Options.mafqood['status'])
     created = models.DateTimeField(auto_now_add=True)
 
+    matched_person = models.ForeignKey('Person', related_name='matched', null=True, blank=True, on_delete=models.SET_NULL)
+
     def __str__(self):
         return self.full_name
 
