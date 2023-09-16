@@ -3,17 +3,8 @@
 
 {% block content %}
 
-<div class="admin_buttons">
-{% if user.is_authenticated %}
-    <a href="disaster/{{disaster.id}}/mafqood/dashboard" class="button is-narrow is-danger is-small">Stats</a>
-    <a href="disaster/{{disaster.id}}/person/report_new_person" class="button is-narrow is-warning is-small">اضف حالة شخص</a>
-{% else %}
-    <a href="/accounts/login" class="button is-narrow is-warning is-small">Login</a>
-{% endif %}
-</div>
-
 {% if disaster.image %}
-    <div class="disaster_image" style="background-image:url('/media/{{disaster.image}}'); width:100%">
+    <div class="page_cover" style="background-image:url('/media/{{disaster.image}}'); width:100%">
         <div style="background-image: linear-gradient(to bottom right, #1a1a1a00, #1a1a1a70, #1a1a1a); height:100%; width:100%"> </div>
     </div>
     <div > </div>
@@ -21,9 +12,7 @@
     <div style="height:6em;"> </div>
 {% endif %}
 
-<strong>{{message}}</strong>
-
-<div class="missing_counter is-size-1 has-text-centered" style="color:white;">
+<div class="missing_counter is-size-1 has-text-centered" style="color:white; {% if disaster.image %}margin-top: -2.7em;{% endif %}" >
     <div class="is-size-5" style="padding-bottom:3px;">حصالة عدد المفقودين</div>
     {% for i in counter %}
     <span class="has-text-centered" style="padding:10px">{{i}}</span>
@@ -31,8 +20,8 @@
 </div>
 
 <div class="is-size-2 has-text-centered">
-    <div class="disaster_name"> {{disaster.name}}</div>
-    <a class="report_button button is-danger is-medium" style="min-width:22%" href="disaster/{{disaster.id}}/mafqood/report_missing" >بلغ عن مفقود</a>
+    <div class="page_title"> {{disaster.name}}</div>
+    <a class="report_button button is-danger is-medium" style="min-width:22%" href="/disaster/{{disaster.id}}/mafqood/report_missing" >بلغ عن مفقود</a>
 </div>
 </br>
 </br>

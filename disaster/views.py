@@ -10,7 +10,7 @@ def media(request):
 
 def disaster(request, disaster=None):
     if disaster:
-        disaster = Disaster.objects.get(name=disaster)
+        disaster = Disaster.objects.get(id=disaster)
     else:
         disaster = Disaster.objects.get(is_main_focus=True)
 

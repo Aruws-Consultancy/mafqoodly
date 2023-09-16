@@ -23,16 +23,16 @@ def report_missing(request, disaster):
 
         if report_form.is_valid():
             report_form.save()
-            messages.success(request, ('Thank you for your Report'))
+            messages.success(request, ('تم ايصال النموذج. نشكركم جزيل الشكر'))
             return redirect("main")
         else:
             print(report_form.errors)
-            messages.error(request, 'Error sending this report')
+            messages.error(request, 'كان هناك خطاء في ارسال التبليغ. نرجو تكرار المحاولة')
 
     report_form = ReportMissing(request=request)
     context = {'disaster': disaster, 'report_form': report_form}
 
-    return render(request=request, template_name="mafqood.html", context=context)
+    return render(request=request, template_name="form_mafqood.html", context=context)
 
 
 @login_required()
@@ -75,15 +75,15 @@ def report_new_person(request, disaster):
 
         if new_person_form.is_valid():
             new_person_form.save()
-            messages.success(request, ('Thank you for your Report'))
+            messages.success(request, ('تم ايصال النموذج. نشكركم جزيل الشكر'))
             return redirect("main")
         else:
             print(new_person_form.errors)
-            messages.error(request, 'Error sending this report')
+            messages.error(request, 'كان هناك خطاء في ارسال التبليغ. نرجو تكرار المحاولة')
 
     new_person_form = NewPerson(request=request)
     context = {'disaster': disaster, 'report_form': new_person_form}
 
-    return render(request=request, template_name="report_new_person.html", context=context)
+    return render(request=request, template_name="form_person.html", context=context)
 
 

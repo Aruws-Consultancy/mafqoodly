@@ -15,15 +15,20 @@ body {background:#1a1a1a !important; color:white; font-family: system-ui;}
 .footer_buttons {top:0; border-radius: 0px 0px 5px 5px;}
 
 /* main content ----------------------------------------------------------------------------------- */
+.section {padding: 2rem 1.5rem}
 .main_content {margin-top:0; padding-top:0;}
-.missing_counter {margin-top: -2.7em; margin-bottom:5px;}
+.missing_counter {margin-bottom:5px;}
 .missing_counter span {background:#1c1c1c90; text-align: center; }
-.disaster_name {padding:5px;}
-.disaster_image {width:auto; height:20em; margin-top: -3em; margin-bottom:1em}
+.page_title {padding:5px;}
+.page_cover {width:auto; height:20em; margin-top: -2em; margin-bottom:1em}
 .report_button {font-family:system-ui; font-weight:bold !important}
 .report_form_container {padding: 0 50px;}
-.admin_buttons {position:fixed; top:50px; padding-left: 20px; }
 .button {font-weight:bold !important}
+.notification {border-radius: 0px 0px 5px 5px;}
+
+.admin_buttons {z-index:999;}
+.admin_buttons .button {border-radius: 0px 0px 5px 5px;}
+
 
 /* forms ----------------------------------------------------------------------------------- */
 .label {color:white !important}

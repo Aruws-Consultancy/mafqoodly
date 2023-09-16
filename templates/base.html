@@ -24,16 +24,14 @@
 </head>
 
 <body>
-    <div class="lds-ring loader" id="loader"><div></div><div></div><div></div><div></div></div>
-
-    <div>
-
-    <section class="section has-text-right">
+    {% if messages %}
+        {% include "message.html" %}
+    {% endif %}
+    {% if user.is_authenticated %}
+        {% include "toolbar.html" %}
+    {% endif %}
+    <section class="section has-text-right" style="padding-bottom:0px;">
         <div class="container header">
-
-<!--            <span class="flag has-text-left" style="float:left">-->
-<!--                <img src="/static/img/libya_flag.png">-->
-<!--            </span>-->
             <div style="display:block">
                 <a href="/"><img src="/static/img/logo.png" class="logo_img"></a>
             </div>
@@ -43,7 +41,7 @@
         </div>
     </section>
 
-    <section class="section main_content">
+    <section class="section">
         <div class="container">
             <div class="content">
                 {% block content %}
@@ -55,16 +53,18 @@
     <div class="container footer">
         <a class="button footer_buttons" href="/volunteer/new_volunteer">تطوع معنا</a>
         <a class="button footer_buttons" href="/media">تغطية اعلامية</a>
+        {% if not user.is_authenticated %}
+        <a class="button footer_buttons is-warning is-pulled-right" href="/accounts/login" >Login</a>
+        {% endif %}
 
-        <div class="copyright-content columns" style="padding-top:15px;">
-            <div class="column">
-                Mafqood.ly</br>
+        <div class="copyright-content columns" style="padding-top:20px; margin-top:0px; display:flex;">
+            <div class="column" style="width:50%">
                 Contact us on:</br>
-                Head Team: +218-931486804</br>
-                Disaster Team: +218-931377894</br>
-                Email: info@mafqood.ly</br>
+                +218-931486804</br>
+                +218-931377894</br>
+                info@mafqood.ly</br>
             </div>
-            <div class="column has-text-right is-size-7" style="color:grey">
+            <div class="column has-text-right is-size-7" style="color:grey; width:50%; padding-top:20px;">
                 <a href="http://www.aruws.com"><img src="/static/img/aruws_logo.svg" width="50px" style="float:right;"></a>
                 </br></br></br>
                 Supported by ARUWS Ltd

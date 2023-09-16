@@ -10,13 +10,13 @@ def new_volunteer(request):
 
         if new_volunteer_form.is_valid():
             new_volunteer_form.save()
-            messages.success(request, ('Thank you for your Report'))
+            messages.success(request, ('نشكركم لتعاون معنا. عضو من فريقنا سيتصل بكم قريبا!'))
             return redirect("main")
         else:
             print(new_volunteer_form.errors)
-            messages.error(request, 'Error sending this report')
+            messages.error(request, 'Error in sending this form!')
 
     new_volunteer_form = NewVolunteer(request=request)
     context = {'volunteer_form': new_volunteer_form}
 
-    return render(request=request, template_name="volunteer.html", context=context)
+    return render(request=request, template_name="form_volunteer.html", context=context)
