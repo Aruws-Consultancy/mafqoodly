@@ -18,6 +18,8 @@ class Mafqood(models.Model):
     date_of_birth = models.DateField(blank=True, null=True, verbose_name="تاريخ الميلاد")
     age = models.IntegerField(blank=True, null=True, verbose_name="العمر")
 
+    nationality = models.CharField(max_length=255, null=True, blank=True, default='lby', choices=Options.countries, verbose_name="الجنسية")
+
     address = models.CharField(max_length=255, blank=True, null=True, verbose_name="عنوان السكن")
     city = models.CharField(max_length=255, blank=True, null=True, verbose_name="المدينة")
     contact_number = models.CharField(max_length=14, blank=True, null=True, validators=[onlynumbers], verbose_name="رقم الهاتف")
@@ -34,7 +36,7 @@ class Mafqood(models.Model):
     any_other_details = models.TextField(blank=True, null=True, verbose_name="معلومات اضافية")
     photograph = models.ImageField(upload_to='mafqood', blank=True, null=True, verbose_name="صورة")
 
-    # Contact person
+    # Reporter person
     reporter_name = models.CharField(max_length=255, blank=True, null=True, verbose_name="الاسم")
     reporter_surname = models.CharField(max_length=255, blank=True, null=True, verbose_name="اللقب")
     reporter_email = models.CharField(max_length=255, blank=True, null=True, verbose_name="البريد الالكتروني")
@@ -44,7 +46,11 @@ class Mafqood(models.Model):
     reporter_city = models.CharField(max_length=255, blank=True, null=True, verbose_name="المدينة")
     reporter_address = models.CharField(max_length=255, blank=True, null=True, verbose_name="عنوان السكن")
 
+    # Status Update
     status = models.CharField(max_length=50, null=True, blank=True, default="missing", choices=Options.mafqood['status'])
+    update_by = models.CharField(max_length=50, null=True, blank=True, choices=Options.mafqood['reporter'])
+    update_date = models.DateTimeField(auto_now_add=False, null=True, blank=True)
+
     created = models.DateTimeField(auto_now_add=True)
 
     matched_person = models.ForeignKey('Person', related_name='matched', null=True, blank=True, on_delete=models.SET_NULL)
