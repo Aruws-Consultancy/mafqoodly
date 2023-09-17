@@ -20,7 +20,6 @@ def report_missing(request, disaster):
     # Create your views here.
     if request.method == "POST":
         report_form = ReportMissing(request.POST, request.FILES, request=request)
-
         if report_form.is_valid():
             report_form.save()
             messages.success(request, ('تم ايصال النموذج. نشكركم جزيل الشكر'))

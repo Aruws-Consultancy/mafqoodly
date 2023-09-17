@@ -13,7 +13,7 @@
 <div class="is-size-4 has-text-right" style="direction: rtl; padding-top:0px;">
     <div class="container report_form_container">
         <br method="post" enctype="multipart/form-data">
-        <form method="POST" >
+        <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="column is-narrow is-half" style="display:None">{{report_form.disaster|bulma}}</div>
 
