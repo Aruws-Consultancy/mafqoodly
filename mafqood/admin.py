@@ -4,6 +4,7 @@ from mafqood.models import Mafqood, Person
 
 class MafqoodAdmin(admin.ModelAdmin):
     list_display = ('name', 'surname', 'age', 'city', 'status', 'matched', 'created')
+    search_fields = ['name', 'surname']
 
     def matched(self, obj):
         return obj.is_matched
@@ -11,6 +12,7 @@ class MafqoodAdmin(admin.ModelAdmin):
 
 class PersonAdmin(admin.ModelAdmin):
     list_display = ('name', 'surname', 'age', 'city', 'status', 'matched', 'created')
+    search_fields = ['name', 'surname']
 
     def matched(self, obj):
         return obj.is_matched
