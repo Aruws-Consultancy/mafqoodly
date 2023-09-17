@@ -51,25 +51,26 @@
     </section>
 
     <div class="container footer">
-        <a class="button footer_buttons" href="/volunteer/new_volunteer">تطوع معنا</a>
-        <a class="button footer_buttons" href="/media">تغطية اعلامية</a>
+        <a class="button footer_buttons is-small" href="/volunteer/new_volunteer">تطوع معنا</a>
+        <a class="button footer_buttons is-small" href="/media">تغطية اعلامية</a>
         {% if not user.is_authenticated %}
-        <a class="button footer_buttons is-warning is-pulled-right" href="/accounts/login" >Login</a>
+        <a class="button footer_buttons is-small is-warning is-pulled-right" href="/accounts/login" >Login</a>
         {% else %}
-        <a class="button footer_buttons is-danger is-pulled-right" href="/accounts/logout" >logout</a>
+        <a class="button footer_buttons is-small is-danger is-pulled-right" href="/accounts/logout" >logout</a>
         {% endif %}
 
-        <div class="copyright-content columns" style="padding-top:10px; margin-top:0px; display:flex;">
-            <div class="column" style="width:50%">
-                Contact us on:</br>
+        <div class="copyright-content columns" style="padding-top:10px; margin-top:0px; display:flex; padding-left:10px;">
+            <div class="column is-size-7" style="width:50%">
+                <a href="https://www.instagram.com/mafqood.ly/"><img src="/static/img/insta_icon.png" width="20px"></a></br>
                 +218-931486804</br>
                 +218-931377894</br>
                 info@mafqood.ly</br>
             </div>
-            <div class="column has-text-right is-size-7" style="color:grey; width:50%; padding-top:13px;">
-                <a href="http://www.aruws.com"><img src="/static/img/aruws_logo.svg" width="50px" style="float:right;"></a>
-                </br></br></br>
-                Supported by ARUWS Ltd
+            <div class="column is-size-7" style="color:grey; width:50%; padding-top:15px; padding-right:20px;">
+                <div class="has-text-right is-fullwidth is-wide">
+                    <a href="http://www.aruws.com"><img src="/static/img/aruws_logo.svg" width="55px"></a>
+                </div>
+                <div class="has-text-right is-fullwidth is-wide" style="display:block;">Supported by ARUWS Ltd</div>
             </div>
         </div>
     </div>

@@ -19,7 +19,7 @@ ROOT_URLCONF = 'urls'
 WSGI_APPLICATION = 'config.wsgi.application'
 
 # Hosts
-ALLOWED_HOSTS = ['127.0.0.1', 'mafqood.org', 'mafqood.ly', 'www.mafqood.org', 'www.mafqood.ly']
+ALLOWED_HOSTS = ['127.0.0.1', '13.49.0.60', 'ec2-13-49-0-60.eu-north-1.compute.amazonaws.com', 'mafqood.org', 'mafqood.ly', 'www.mafqood.org', 'www.mafqood.ly']
 
 INSTALLED_APPS = [
     # Core Apps
@@ -27,6 +27,10 @@ INSTALLED_APPS = [
     'mafqood',
     'volunteer',
     'pages',
+
+    # API
+    'rest_framework',
+    'rest_framework.authtoken',
 
     # Django Basic Apps
     'django.contrib.admin',
@@ -38,8 +42,6 @@ INSTALLED_APPS = [
     'django_phonenumbers',
     'phonenumber_field',
     'bulma',
-
-    # Installed Apps
 ]
 
 MIDDLEWARE = [
