@@ -27,4 +27,5 @@ django-bulma
 mysqlclient
 django-phonenumbers
 django-phonenumber-field
+boto3
 django-storages

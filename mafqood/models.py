@@ -3,6 +3,7 @@ from datetime import date, timedelta
 from config.constants import Options
 from disaster.models import Disaster
 from django.core.validators import RegexValidator
+import uuid
 
 onlynumbers = RegexValidator(r'^[0-9]', 'Only numbers are allowed.')
 
@@ -34,7 +35,7 @@ class Mafqood(models.Model):
     clothing = models.CharField(max_length=10, null=True, blank=True, verbose_name="ملابس")
     distinct_feature = models.CharField(max_length=255, blank=True, null=True, verbose_name="ملامح مميزة")
     any_other_details = models.TextField(blank=True, null=True, verbose_name="معلومات اضافية")
-    photograph = models.ImageField(upload_to='mafqood', blank=True, null=True, verbose_name="صورة")
+    photograph = models.ImageField(upload_to='mafqoods', blank=True, null=True, verbose_name="صورة")
 
     # Reporter person
     reporter_name = models.CharField(max_length=255, blank=True, null=True, verbose_name="الاسم")
@@ -72,8 +73,18 @@ class Mafqood(models.Model):
         return (date.today() - self.date_of_birth) // timedelta(days=365.2425)
 
     def save(self, *args, **kwargs):
-        if not self.pk and not self.age and self.date_of_birth:
-            self.age = self.calc_age()
+        if not self.pk:
+            if not self.age and self.date_of_birth:
+                self.age = self.calc_age()
+
+            if self.photograph:
+                self.photograph.name = f'{uuid.uuid4().hex[:6].upper()}_{self.photograph.name}'
+
+        if self.pk is not None:
+            orig = Mafqood.objects.get(pk=self.pk)
+            if orig.photograph != self.photograph:
+                self.photograph.name = f'{uuid.uuid4().hex[:6].upper()}_{self.photograph.name}'
+
         return super(Mafqood, self).save(*args, **kwargs)
 
 
@@ -85,6 +96,7 @@ class Person(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True, verbose_name="الاسم")
     surname = models.CharField(max_length=255, blank=True, null=True, verbose_name="اللقب")
 
+    nationality = models.CharField(max_length=255, null=True, blank=True, default='lby', choices=Options.countries, verbose_name="الجنسية")
     date_of_birth = models.DateField(blank=True, null=True, verbose_name="تاريخ الميلاد")
     age = models.IntegerField(blank=True, null=True, verbose_name="العمر")
 
@@ -102,7 +114,8 @@ class Person(models.Model):
     clothing = models.CharField(max_length=10, null=True, blank=True, verbose_name="ملابس")
     distinct_feature = models.CharField(max_length=255, blank=True, null=True, verbose_name="ملامح مميزة")
     any_other_details = models.TextField(blank=True, null=True, verbose_name="معلومات اضافية")
-    photograph = models.ImageField(upload_to='mafqood', blank=True, null=True, verbose_name="صورة")
+    photograph = models.ImageField(upload_to='persons', blank=True, null=True, verbose_name="صورة")
+    document = models.ImageField(upload_to='documents', blank=True, null=True, verbose_name="ملفات")
 
     status = models.CharField(max_length=50, null=True, blank=True, default="idp", choices=Options.people['status'], verbose_name="الوضع الحالي")
     created = models.DateTimeField(auto_now_add=True)
@@ -122,6 +135,16 @@ class Person(models.Model):
         return (date.today() - self.date_of_birth) // timedelta(days=365.2425)
 
     def save(self, *args, **kwargs):
-        if not self.pk and not self.age and self.date_of_birth:
-            self.age = self.calc_age()
+        if not self.pk:
+            if not self.age and self.date_of_birth:
+                self.age = self.calc_age()
+
+            if self.photograph:
+                self.photograph.name = f'{uuid.uuid4().hex[:6].upper()}_{self.photograph.name}'
+
+        if self.pk is not None:
+            orig = Person.objects.get(pk=self.pk)
+            if orig.photograph != self.photograph:
+                self.photograph.name = f'{uuid.uuid4().hex[:6].upper()}_{self.photograph.name}'
+
         return super(Person, self).save(*args, **kwargs)

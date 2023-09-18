@@ -32,7 +32,7 @@ class Volunteer(models.Model):
 
     about_volunteer = models.TextField(max_length=255, blank=True, null=True, verbose_name="نبذة عن المتطوع")
 
-    photograph = models.ImageField(upload_to='volunteer', blank=True, null=True, verbose_name="صورة المتطوع")
+    photograph = models.ImageField(upload_to='volunteers', blank=True, null=True, verbose_name="صورة المتطوع")
 
     status = models.CharField(max_length=50, null=True, blank=True, default="new", choices=Options.volunteer['status'])
     created = models.DateTimeField(auto_now_add=True)

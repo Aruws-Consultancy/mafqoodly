@@ -27,9 +27,11 @@
             </div>
 
             <div class="columns">
-                <div class="column is-narrow is-one-third required_field">{{report_form.status|bulma}}</div>
-                <div class="column is-narrow is-one-third">{{report_form.date_of_birth|bulma}}</div>
-                <div class="column is-narrow is-one-third">{{report_form.age|bulma}}</div>
+                <div class="column is-narrow is-one-quarter required_field">{{report_form.status|bulma}}</div>
+                <div class="column is-narrow is-one-quarter">{{report_form.date_of_birth|bulma}}</div>
+                <div class="column is-narrow is-one-quarter">{{report_form.age|bulma}}</div>
+                <div class="column is-narrow is-one-quarter">{{report_form.nationality|bulma}}</div>
+
             </div>
 
             <div style="margin:0px 0 30px 0; padding-bottom:5px; border-bottom:1px white dashed;"> </div>
@@ -58,6 +60,7 @@
 
             {{report_form.any_other_details|bulma}}
             {{report_form.photograph|bulma}}
+            {{report_form.document|bulma}}
 
             <div class="is-size-2 has-text-centered">
                 <button class="report_button button is-warning is-medium" type="submit" style="min-width:22%">ارسل التبليغ</button>
