@@ -14,7 +14,11 @@ class Mafqood(models.Model):
 
     # Missing Person
     name = models.CharField(max_length=255, blank=False, null=False, verbose_name="الاسم")
+    father_name = models.CharField(max_length=255, blank=True, null=True, verbose_name="اسم الاب")
+    grandfather_name = models.CharField(max_length=255, blank=True, null=False, verbose_name="اسم الجد  (والد الأب)")
     surname = models.CharField(max_length=255, blank=False, null=False, verbose_name="اللقب")
+
+    mother_name = models.CharField(max_length=255, blank=True, null=True, verbose_name="اسم الام")
 
     date_of_birth = models.DateField(blank=True, null=True, verbose_name="تاريخ الميلاد")
     age = models.IntegerField(blank=True, null=True, verbose_name="العمر")

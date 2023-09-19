@@ -20,28 +20,31 @@
             <div style="margin:0px 0 10px 0; padding-bottom:5px; border-bottom:2px white solid;">
                 معلومات المفقود
             </div>
-            <div class="is-size-5" style="margin:0px 0 15px 0;">
+            <div class="is-size-5" style="margin:0px 0 15px 0; padding-bottom:20px;">
                 تعد المعلومات التي تقدمها عن الشخص المفقود أساسية للتعرف عليه بدقه وفعالية خصوصا في حالات الإصابة أو وجود ضرر، وكلما كانت دقيقه ومفصله كانت فرق الانقاذ والبحث أقدر على تمييز الشخص والتعرف عليه، لذلك نأمل تزويدنا بمعلومات مفصلة ودقيقة.
             </div>
 
             <div class="columns">
-                <div class="column is-narrow is-half required_field">{{report_form.name|bulma}}</div>
-                <div class="column is-narrow is-half required_field">{{report_form.surname|bulma}}</div>
-            </div>
-
-            <div class="columns">
-                <div class="column is-narrow is-one-quarter required_field">{{report_form.last_contact_date|bulma}}</div>
-                <div class="column is-narrow is-one-quarter">{{report_form.nationality|bulma}}</div>
-                <div class="column is-narrow is-one-quarter">{{report_form.date_of_birth|bulma}}</div>
-                <div class="column is-narrow is-one-quarter">{{report_form.age|bulma}}</div>
+                <div class="column is-narrow is-one-quarter required_field">{{report_form.name|bulma}}</div>
+                <div class="column is-narrow is-one-quarter">{{report_form.father_name|bulma}}</div>
+                <div class="column is-narrow is-one-quarter">{{report_form.grandfather_name|bulma}}</div>
+                <div class="column is-narrow is-one-quarter required_field">{{report_form.surname|bulma}}</div>
             </div>
 
             <div style="margin:0px 0 30px 0; padding-bottom:5px; border-bottom:1px white dashed;"> </div>
 
             <div class="columns">
-                <div class="column is-narrow is-one-third required_field">{{report_form.city|bulma}}</div>
-                <div class="column is-narrow is-one-third">{{report_form.address|bulma}}</div>
-                <div class="column is-narrow is-one-third">{{report_form.contact_number|bulma}}</div>
+                <div class="column is-narrow is-one-quarter">{{report_form.nationality|bulma}}</div>
+                <div class="column is-narrow is-one-quarter">{{report_form.mother_name|bulma}}</div>
+                <div class="column is-narrow is-one-quarter">{{report_form.date_of_birth|bulma}}</div>
+                <div class="column is-narrow is-one-quarter">{{report_form.age|bulma}}</div>
+            </div>
+
+            <div class="columns">
+                <div class="column is-narrow is-one-quarter required_field">{{report_form.last_contact_date|bulma}}</div>
+                <div class="column is-narrow is-one-quarter required_field">{{report_form.city|bulma}}</div>
+                <div class="column is-narrow is-one-quarter">{{report_form.address|bulma}}</div>
+                <div class="column is-narrow is-one-quarter">{{report_form.contact_number|bulma}}</div>
             </div>
 
             <div style="margin:0px 0 30px 0; padding-bottom:5px; border-bottom:1px white dashed;"> </div>
