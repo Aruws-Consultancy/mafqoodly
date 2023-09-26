@@ -13,6 +13,10 @@ favicon_view = RedirectView.as_view(url='/static/favicon.ico', permanent=True)
 admin.site.site_header = 'Mafqood - Admin'
 admin.site.index_title = 'Mafqood.ly'
 
+handler404 = 'disaster.views.error_404'
+handler500 = 'disaster.views.error_500'
+handler403 = 'disaster.views.error_403'
+handler400 = 'disaster.views.error_404'
 
 urlpatterns = [
 
