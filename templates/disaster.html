@@ -4,7 +4,7 @@
 {% block content %}
 
 {% if disaster.image %}
-    <div class="page_cover" style="background-image:url('/media/{{disaster.image}}'); width:100%">
+    <div class="page_cover" style="background-image:url('{{disaster.image.url}}'); width:100%">
         <div style="background-image: linear-gradient(to bottom right, #1a1a1a00, #1a1a1a70, #1a1a1a); height:100%; width:100%"> </div>
     </div>
     <div > </div>
