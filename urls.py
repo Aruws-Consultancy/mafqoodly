@@ -38,6 +38,7 @@ urlpatterns = [
     path('disaster/<int:disaster>/mafqood/dashboard', mafqood_views.missing_dashboard, name='missing_dashboard'),
     path('disaster/<int:disaster>/mafqood/search', mafqood_views.mafqood_search, name='mafqood_search'),
     path('disaster/<int:disaster>/mafqood/<int:id>', mafqood_views.mafqood_update, name='mafqood_update'),
+    path('disaster/<int:disaster>/mafqood/<int:id>/delete', mafqood_views.mafqood_delete, name='mafqood_delete'),
 
     # Person
     path('disaster/<int:disaster>/person/report_new_person', mafqood_views.report_new_person, name='report_new_person'),

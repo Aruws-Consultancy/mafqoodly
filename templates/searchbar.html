@@ -1,0 +1,37 @@
+    <form action="{% url 'mafqood_search' disaster.id %}" method="get" style="padding:30px 60px">
+        <div class="columns">
+            <div class="column is-one-quarter">
+                <div class="field">
+                    <label class="label">Search Type</label>
+                    <div class="control ">
+                      <span class="select">
+                        <select name="t" class=" control" id="search_type">
+                          <option value="">Any</option>
+                          <option value="name" {% if type == 'name' %}SELECTED{% endif %}>First Name</option>
+                          <option value="surname" {% if type == 'surname' %}SELECTED{% endif %}>Surname</option>
+                          <option value="full_name" {% if type == 'full_name' %}SELECTED{% endif %}>Full Name</option>
+                          <option value="date_of_birth" {% if type == 'date_of_birth' %}SELECTED{% endif %}>Date Of Birth</option>
+                          <option value="contact_number" {% if type == 'contact_number' %}SELECTED{% endif %}>Contact Number</option>
+                          <option value="reporter_number" {% if type == 'reporter_number' %}SELECTED{% endif %}>Reporter Contact Number</option>
+                        </select>
+                      </span>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-half">
+                <div class="field">
+                    <label for="serach_text" class="label">Search</label>
+                    <div class="control ">
+                      <input type="text" name="q" maxlength="255" class=" control input" id="serach_text" value="{% if query %}{{query}}{% endif %}">
+                    </div>
+                </div>
+            </div>
+            <div class="column is-one-querater">
+                <div class="field">
+                    <label class="label">&nbsp;</label>
+                    <button class="report_button is-fullwidth button is-warning is-search" type="submit" style="">Search</button>
+                </div>
+            </div>
+
+        </div>
+    </form>

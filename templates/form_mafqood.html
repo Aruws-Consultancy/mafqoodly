@@ -105,6 +105,11 @@
 
             <div class="is-size-2 has-text-centered" style="padding-top:20px;">
                 <button class="report_button button is-warning is-medium" type="submit" style="min-width:22%">{{submit_btn_txt}}</button>
+                {% if mafqood %}
+                <a  href="{% url 'mafqood_delete' disaster.id mafqood.id %}"
+                   onclick="return confirm('Are you sure you would like to delete this record?')"
+                   class="report_button button is-danger is-medium" style="min-width:22%">Delete</a>
+                {% endif %}
             </div>
         </form>
         <div class="is-size-6 has-text-centered" style="padding: 10px 10px">

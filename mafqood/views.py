@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.db.models import Q
+import dateutil.parser
 from mafqood.models import Mafqood
 from disaster.models import Disaster
 from mafqood.forms import ReportMissing, NewPerson
@@ -28,9 +29,20 @@ def mafqood_update(request, disaster, id):
             messages.error(request, 'Error In Updating Report - Please report to Admin')
 
     report_form = ReportMissing(request=request, instance=mafqood)
-    context = {'disaster': disaster, 'report_form': report_form, 'submit_btn_txt':"Update Changes"}
+    context = {'disaster': disaster, 'mafqood':mafqood, 'report_form': report_form, 'submit_btn_txt':"Update Changes"}
 
     return render(request=request, template_name="form_mafqood.html", context=context)
+
+
+@login_required()
+def mafqood_delete(request, disaster, id):
+    disaster = get_object_or_404(Disaster, id=disaster)
+    mafqood = get_object_or_404(Mafqood, id=id)
+    request.disaster = disaster
+    request.mafqood = mafqood
+
+    mafqood.delete()
+    return redirect("mafqood_search", disaster.id)
 
 
 @login_required()
@@ -48,6 +60,13 @@ def mafqood_search(request, disaster):
             mafqoods = Mafqood.objects.filter(surname=query)
         elif type == 'full_name':
             mafqoods = Mafqood.objects.filter(full_name=query)
+        elif type == 'date_of_birth':
+            dob = dateutil.parser.parse(query)
+            mafqoods = Mafqood.objects.filter(date_of_birth=dob)
+        elif type == 'contact_number':
+            mafqoods = Mafqood.objects.filter(contact_number=query)
+        elif type == 'reporter_number':
+            mafqoods = Mafqood.objects.filter(Q(reporter_contact_number=query) | Q(reporter_contact_number_2=query))
         else:
             mafqoods = Mafqood.objects.filter(Q(full_name__icontains=query) | Q(name__icontains=query) | Q(surname__icontains=query))
     else:
