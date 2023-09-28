@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
             model_name="mafqood",
             name="comment",
             field=models.TextField(
-                blank=True, null=True, verbose_name="معلومات اضافية"
+                blank=True, null=True, verbose_name="Comment"
             ),
         ),
     ]

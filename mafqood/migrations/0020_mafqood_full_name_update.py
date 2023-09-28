@@ -13,7 +13,7 @@ def update_full_name(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("mafqood", "0019_alter_mafqood_comment"),
+        ("mafqood", "0018_mafqood_comment"),
     ]
 
     operations = [
