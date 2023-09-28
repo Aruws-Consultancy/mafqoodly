@@ -18,6 +18,8 @@ class Mafqood(models.Model):
     grandfather_name = models.CharField(max_length=255, blank=True, null=False, verbose_name="اسم الجد  (والد الأب)")
     surname = models.CharField(max_length=255, blank=False, null=False, verbose_name="اللقب")
 
+    full_name = models.CharField(max_length=255, blank=True, null=True, verbose_name="الاسم كامل")
+
     mother_name = models.CharField(max_length=255, blank=True, null=True, verbose_name="اسم الام")
 
     date_of_birth = models.DateField(blank=True, null=True, verbose_name="تاريخ الميلاد")
@@ -55,17 +57,14 @@ class Mafqood(models.Model):
     status = models.CharField(max_length=50, null=True, blank=True, default="missing", choices=Options.mafqood['status'])
     update_by = models.CharField(max_length=50, null=True, blank=True, choices=Options.mafqood['reporter'])
     update_date = models.DateTimeField(auto_now_add=False, null=True, blank=True)
+    comment = models.TextField(blank=True, null=True, verbose_name="Comments")
 
     created = models.DateTimeField(auto_now_add=True)
 
     matched_person = models.ForeignKey('Person', related_name='matched', null=True, blank=True, on_delete=models.SET_NULL)
 
     def __str__(self):
-        return self.full_name
-
-    @property
-    def full_name(self):
-        return f'{self.name} {self.surname}'
+        return self.full_name if self.full_name else self.name
 
     @property
     def is_matched(self):
@@ -75,6 +74,16 @@ class Mafqood(models.Model):
         if not self.date_of_birth:
             return None
         return (date.today() - self.date_of_birth) // timedelta(days=365.2425)
+
+    def get_full_name(self):
+        name = self.name
+        if self.father_name:
+            name = name + f' {self.father_name}'
+        if self.grandfather_name:
+            name = name + f' {self.grandfather_name}'
+        if self.surname:
+            name = name + f' {self.surname}'
+        return name
 
     def save(self, *args, **kwargs):
         if not self.pk:
@@ -89,6 +98,7 @@ class Mafqood(models.Model):
             if orig.photograph != self.photograph:
                 self.photograph.name = f'{uuid.uuid4().hex[:6].upper()}_{self.photograph.name}'
 
+        self.full_name = self.get_full_name()
         return super(Mafqood, self).save(*args, **kwargs)
 
 

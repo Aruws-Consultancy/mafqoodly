@@ -1,16 +1,68 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 from django.db.models import Q
 from mafqood.models import Mafqood
 from disaster.models import Disaster
 from mafqood.forms import ReportMissing, NewPerson
 
 
-def mafqood_update(request, id):
+@login_required()
+def mafqood_update(request, disaster, id):
     mafqood = get_object_or_404(Mafqood, id=id)
-    content = {'mafqood': mafqood}
-    return render(request, "main.html", content)
+    disaster = get_object_or_404(Disaster, id=disaster)
+    request.disaster = disaster
+    request.mafqood = mafqood
+
+    # Create your views here.
+    if request.method == "POST":
+        report_form = ReportMissing(request.POST, request.FILES, request=request, instance=mafqood)
+
+        if report_form.is_valid():
+            report_form.save()
+            messages.success(request, ('Report Updated!'))
+            return redirect("mafqood_search", disaster.id)
+        else:
+            print(report_form.errors)
+            messages.error(request, 'Error In Updating Report - Please report to Admin')
+
+    report_form = ReportMissing(request=request, instance=mafqood)
+    context = {'disaster': disaster, 'report_form': report_form}
+
+    return render(request=request, template_name="form_mafqood.html", context=context)
+
+
+@login_required()
+def mafqood_search(request, disaster):
+    disaster = get_object_or_404(Disaster, id=disaster)
+
+    # Search
+    query = request.GET.get('q')
+    type = request.GET.get('t')
+
+    if query:
+        if type == 'name':
+            mafqoods = Mafqood.objects.filter(name=query)
+        elif type == 'surname':
+            mafqoods = Mafqood.objects.filter(surname=query)
+        elif type == 'full_name':
+            mafqoods = Mafqood.objects.filter(full_name=query)
+        else:
+            mafqoods = Mafqood.objects.filter(Q(full_name__icontains=query) | Q(name__icontains=query) | Q(surname__icontains=query))
+    else:
+        mafqoods = Mafqood.objects.all()
+
+    # Paginator
+    paginator = Paginator(mafqoods, 20)
+    page = request.GET.get('page')
+    page_obj = paginator.get_page(page)
+
+    content = {'disaster': disaster,
+               'mafqoods': mafqoods, 'page_obj':page_obj,
+               'query':query,
+               'type':type}
+    return render(request, "mafqoods_list.html", content)
 
 
 def report_missing(request, disaster):

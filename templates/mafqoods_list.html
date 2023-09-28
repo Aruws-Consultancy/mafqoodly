@@ -1,0 +1,81 @@
+{% extends 'base.html'%}
+{% load static %}
+{% load bulma_tags %}
+
+{% block content %}
+
+<div class="is-size-2 has-text-centered">
+    <div class="page_title" style="direction:rtl">مفقودي {{disaster.name}} </div>
+</div>
+
+</br>
+<div class="is-size-4 has-text-right" style="direction: rtl; padding-top:0px;">
+
+    <form action="{% url 'mafqood_search' disaster.id %}" method="get" style="padding:30px 60px">
+        <div class="columns">
+            <div class="column is-one-quarter">
+                <div class="field">
+                    <label class="label">Search Type</label>
+                    <div class="control ">
+                      <span class="select">
+                        <select name="t" class=" control" id="search_type">
+                          <option value="">Any</option>
+                          <option value="name" {% if type == 'name' %}SELECTED{% endif %}>First Name</option>
+                          <option value="surname" {% if type == 'surname' %}SELECTED{% endif %}>Surname</option>
+                          <option value="full_name" {% if type == 'full_name' %}SELECTED{% endif %}>Full Name</option>
+                        </select>
+                      </span>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-half">
+                <div class="field">
+                    <label for="serach_text" class="label">Search</label>
+                    <div class="control ">
+                      <input type="text" name="q" maxlength="255" class=" control input" id="serach_text" value="{% if query %}{{query}}{% endif %}">
+                    </div>
+                </div>
+            </div>
+            <div class="column is-one-querater">
+                <div class="field">
+                    <label class="label">&nbsp;</label>
+                    <button class="report_button is-fullwidth button is-warning is-search" type="submit" style="">Search</button>
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+    <div class="container is-size-6" style="padding:30px 0; ">
+        <table class="table is-hoverable">
+            <thead>
+            <tr>
+              <th><abbr title="Full Name">Full Name</abbr></th>
+              <th><abbr title="City">City</abbr></th>
+              <th><abbr title="Age">Age</abbr></th>
+              <th><abbr title="Reporter">Reporter</abbr></th>
+              <th><abbr title="Status">Status</abbr></th>
+              <th><abbr title="Status"></abbr></th>
+            </tr>
+          </thead>
+            <tbody>
+                {% for m in page_obj %}
+                <tr>
+                  <td>{{m.full_name}}</td>
+                  <td>{{m.city}}</td>
+                  <td>{{m.age}}</td>
+                  <td>{{m.reporter_name}}</td>
+                  <td>{{m.statu}}</td>
+                  <td> <a href="{% url 'mafqood_update' disaster.id m.id %}">Edit</a> </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    {% include 'pagination.html' %}
+</div>
+
+</div>
+</br>
+{% endblock %}

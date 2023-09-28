@@ -10,7 +10,8 @@ class ReportMissing(forms.ModelForm):
         fields = '__all__'
         widgets = {'disaster': forms.HiddenInput(),
                    'date_of_birth': forms.DateInput(attrs={'type': 'date'}),
-                   'last_contact_date': forms.DateInput(attrs={'type': 'date'})
+                   'last_contact_date': forms.DateInput(attrs={'type': 'date'}),
+                   'update_date': forms.DateInput(attrs={'type': 'date'})
                     }
 
     def __init__(self, *args, **kwargs):
