@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("mafqood", "0017_mafqood_full_name_update"),
+        ("mafqood", "0018_mafqood_full_name_update"),
     ]
 
     operations = [
