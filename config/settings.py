@@ -14,7 +14,7 @@ load_dotenv(os.path.join(BASE_DIR, "../.env"))
 SECRET_KEY = 'django-insecure-om&_&==b1=5y18)lo8=-xvcijteu0lj7^d^$#4)0m9$v)-c5a&'
 
 # Basics
-DEBUG = False
+DEBUG = True
 ROOT_URLCONF = 'urls'
 WSGI_APPLICATION = 'config.wsgi.application'
 
