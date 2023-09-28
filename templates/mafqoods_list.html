@@ -65,7 +65,7 @@
                   <td>{{m.city}}</td>
                   <td>{{m.age}}</td>
                   <td>{{m.reporter_name}}</td>
-                  <td>{{m.statu}}</td>
+                  <td>{{m.get_status_display}}</td>
                   <td> <a href="{% url 'mafqood_update' disaster.id m.id %}">Edit</a> </td>
                 </tr>
                 {% endfor %}

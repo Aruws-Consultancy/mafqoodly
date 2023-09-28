@@ -28,7 +28,7 @@ def mafqood_update(request, disaster, id):
             messages.error(request, 'Error In Updating Report - Please report to Admin')
 
     report_form = ReportMissing(request=request, instance=mafqood)
-    context = {'disaster': disaster, 'report_form': report_form}
+    context = {'disaster': disaster, 'report_form': report_form, 'submit_btn_txt':"Update Changes"}
 
     return render(request=request, template_name="form_mafqood.html", context=context)
 
@@ -82,7 +82,7 @@ def report_missing(request, disaster):
             messages.error(request, 'كان هناك خطاء في ارسال التبليغ. نرجو تكرار المحاولة')
 
     report_form = ReportMissing(request=request)
-    context = {'disaster': disaster, 'report_form': report_form}
+    context = {'disaster': disaster, 'report_form': report_form, 'submit_btn_txt':"ارسل التبليغ"}
 
     return render(request=request, template_name="form_mafqood.html", context=context)
 
