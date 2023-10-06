@@ -22,7 +22,8 @@
               <th><abbr title="Age">Age</abbr></th>
               <th><abbr title="Reporter">Reporter</abbr></th>
               <th><abbr title="Status">Status</abbr></th>
-              <th><abbr title="Status"></abbr></th>
+              <th><abbr title="Status">Nationality</abbr></th>
+              <th><abbr title="EDIT"></abbr></th>
             </tr>
           </thead>
             <tbody>
@@ -33,6 +34,7 @@
                   <td>{{m.age}}</td>
                   <td>{{m.reporter_name}}</td>
                   <td>{{m.get_status_display}}</td>
+                  <td>{{m.get_nationality_display}}</td>
                   <td> <a href="{% url 'mafqood_update' disaster.id m.id %}">Edit</a> </td>
                 </tr>
                 {% endfor %}
