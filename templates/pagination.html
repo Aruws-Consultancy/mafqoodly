@@ -1,7 +1,7 @@
 <div class="is-wide has-text-centered">
-    {% if page_obj.has_previous %}
-        <a class="button is-white is-small" href="?page=1">&laquo; first</a>
-        <a class="button is-white is-small"  href="?page={{ page_obj.previous_page_number }}"><<</a>
+     {% if page_obj.has_previous %}
+        <a class="button is-white is-small"  href="?page=1{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">&laquo; first</a>
+        <a class="button is-white is-small"  href="?page={{ page_obj.previous_page_number }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}"><<</a>
     {% endif %}
 
     <span class="">
@@ -9,7 +9,7 @@
     </span>
 
     {% if page_obj.has_next %}
-        <a class="button is-white is-small" href="?page={{ page_obj.next_page_number }}">>></a>
-        <a class="button is-white is-small" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+       <a class="button is-white is-small" href="?page={{ page_obj.next_page_number }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">>></a>
+       <a class="button is-white is-small" href="?page={{page_obj.paginator.num_pages }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">last &raquo;</a>
     {% endif %}
 </nav>
