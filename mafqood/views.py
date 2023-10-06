@@ -7,6 +7,7 @@ import dateutil.parser
 from mafqood.models import Mafqood
 from disaster.models import Disaster
 from mafqood.forms import ReportMissing, NewPerson
+from config.constants import Options
 
 
 @login_required()
@@ -25,7 +26,6 @@ def mafqood_update(request, disaster, id):
             messages.success(request, ('Report Updated!'))
             return redirect("mafqood_search", disaster.id)
         else:
-            print(report_form.errors)
             messages.error(request, 'Error In Updating Report - Please report to Admin')
 
     report_form = ReportMissing(request=request, instance=mafqood)
@@ -52,6 +52,7 @@ def mafqood_search(request, disaster):
     # Search
     query = request.GET.get('q')
     type = request.GET.get('t')
+    mafqoods = []
 
     if query:
         if type == 'name':
@@ -65,6 +66,10 @@ def mafqood_search(request, disaster):
             mafqoods = Mafqood.objects.filter(date_of_birth=dob)
         elif type == 'contact_number':
             mafqoods = Mafqood.objects.filter(contact_number=query)
+        elif type == 'nationality':
+            nationality = [t for t in Options.countries if query in t]
+            if nationality:
+                mafqoods = Mafqood.objects.filter(nationality=nationality[0][0])
         elif type == 'reporter_number':
             mafqoods = Mafqood.objects.filter(Q(reporter_contact_number=query) | Q(reporter_contact_number_2=query))
         else:
