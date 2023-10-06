@@ -50,32 +50,39 @@ def mafqood_search(request, disaster):
     disaster = get_object_or_404(Disaster, id=disaster)
 
     # Search
-    query = request.GET.get('q')
-    type = request.GET.get('t')
-    mafqoods = []
+    txt_query = request.GET.get('t_query')
+    txt_type = request.GET.get('t_type')
+    dob = request.GET.get('dob')
+    nationality = request.GET.get('nat')
 
-    if query:
-        if type == 'name':
-            mafqoods = Mafqood.objects.filter(name=query)
-        elif type == 'surname':
-            mafqoods = Mafqood.objects.filter(surname=query)
-        elif type == 'full_name':
-            mafqoods = Mafqood.objects.filter(full_name=query)
-        elif type == 'date_of_birth':
-            dob = dateutil.parser.parse(query)
-            mafqoods = Mafqood.objects.filter(date_of_birth=dob)
-        elif type == 'contact_number':
-            mafqoods = Mafqood.objects.filter(contact_number=query)
-        elif type == 'nationality':
-            nationality = [t for t in Options.countries if query in t]
-            if nationality:
-                mafqoods = Mafqood.objects.filter(nationality=nationality[0][0])
-        elif type == 'reporter_number':
-            mafqoods = Mafqood.objects.filter(Q(reporter_contact_number=query) | Q(reporter_contact_number_2=query))
+    conditions = Q()
+
+    if txt_query:
+        if txt_type == 'name':
+            conditions.add(Q(name=txt_query), Q.AND)
+        elif txt_type == 'surname':
+            conditions.add(Q(surname=txt_query), Q.AND)
+        elif txt_type == 'full_name':
+            conditions.add(Q(full_name=txt_query), Q.AND)
+        elif txt_type == 'contact_number':
+            conditions.add(Q(contact_number=txt_query), Q.AND)
+        elif txt_type == 'reporter_number':
+            conditions.add((Q(reporter_contact_number=txt_query) | Q(reporter_contact_number_2=txt_query)), Q.AND)
         else:
-            mafqoods = Mafqood.objects.filter(Q(full_name__icontains=query) | Q(name__icontains=query) | Q(surname__icontains=query))
-    else:
-        mafqoods = Mafqood.objects.all()
+            conditions.add((Q(full_name__icontains=txt_query) | Q(name__icontains=txt_query) | Q(surname__icontains=txt_query)), Q.AND)
+
+    if dob:
+        conditions.add(Q(date_of_birth=dob), Q.AND)
+
+    if nationality:
+        if nationality == 'NONLBY':
+            conditions.add((Q(nationality__isnull=False) & ~Q(nationality='lby')), Q.AND)
+        else:
+            nat_val = [t for t in Options.countries if nationality in t]
+            if nat_val:
+                conditions.add(Q(nationality=nat_val[0][0]), Q.AND)
+
+    mafqoods = Mafqood.objects.filter(conditions)
 
     # Paginator
     paginator = Paginator(mafqoods, 20)
@@ -83,9 +90,14 @@ def mafqood_search(request, disaster):
     page_obj = paginator.get_page(page)
 
     content = {'disaster': disaster,
-               'mafqoods': mafqoods, 'page_obj':page_obj,
-               'query':query,
-               'type':type}
+               'countries': Options.countries,
+               'mafqoods': mafqoods,
+               'page_obj': page_obj,
+               't_query': txt_query,
+               't_type': txt_type,
+               'dob': dob,
+               'nat': nationality}
+
     return render(request, "mafqoods_list.html", content)
 
 
